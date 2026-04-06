@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Home, User, GraduationCap, Briefcase, Mail } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 const navItems = [
   { id: 'hero', icon: <Home size={22} />, label: 'Home' },
@@ -54,23 +55,24 @@ const Sidebar = () => {
   return (
     <motion.div 
       className="sidebar-premium"
-      initial={{ y: 100, x: "-50%", opacity: 0 }}
-      animate={{ y: 0, x: "-50%", opacity: 1 }}
+      initial={{ x: -100, y: "-50%", opacity: 0 }}
+      animate={{ x: 0, y: "-50%", opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="sidebar-icons">
         {navItems.map((item) => (
-          <motion.div 
-            key={item.id} 
-            className={`sidebar-icon-wrapper interactive ${activeSection === item.id ? 'active' : ''}`}
-            onClick={() => scrollToSection(item.id)}
-            whileHover={{ scale: 1.2, y: -5 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <div className="sidebar-icon">{item.icon}</div>
-            <div className="sidebar-tooltip">{item.label}</div>
-          </motion.div>
+          <Magnetic key={item.id}>
+            <motion.div 
+              className={`sidebar-icon-wrapper ${activeSection === item.id ? 'active' : ''}`}
+              onClick={() => scrollToSection(item.id)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <div className="sidebar-icon">{item.icon}</div>
+              <div className="sidebar-tooltip">{item.label}</div>
+            </motion.div>
+          </Magnetic>
         ))}
       </div>
     </motion.div>

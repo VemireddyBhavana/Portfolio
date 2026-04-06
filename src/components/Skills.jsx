@@ -6,16 +6,18 @@ import {
     Database, Boxes, Sparkles, BrainCircuit 
 } from 'lucide-react';
 import ParallaxTitle from './ParallaxTitle';
+import Magnetic from './Magnetic';
+import AnimatedText from './AnimatedText';
 
 const skills = [
-    { icon: <FileCode size={20} />, label: 'HTML' },
-    { icon: <Paintbrush size={20} />, label: 'CSS' },
-    { icon: <Braces size={20} />, label: 'JavaScript' },
-    { icon: <Database size={20} />, label: 'SQL' },
-    { icon: <Database size={20} />, label: 'MongoDB' },
-    { icon: <Boxes size={20} />, label: 'MERN Stack' },
-    { icon: <Sparkles size={20} />, label: 'Gen AI' },
-    { icon: <BrainCircuit size={20} />, label: 'LLMs' }
+    { icon: <FileCode size={22} />, label: 'HTML' },
+    { icon: <Paintbrush size={22} />, label: 'CSS' },
+    { icon: <Braces size={22} />, label: 'JavaScript' },
+    { icon: <Database size={22} />, label: 'SQL' },
+    { icon: <Database size={22} />, label: 'MongoDB' },
+    { icon: <Boxes size={22} />, label: 'MERN Stack' },
+    { icon: <Sparkles size={22} />, label: 'Gen AI' },
+    { icon: <BrainCircuit size={22} />, label: 'LLMs' }
 ];
 
 const Skills = () => {
@@ -32,15 +34,31 @@ const Skills = () => {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.1,
+                delayChildren: 0.2
             }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+        hidden: { opacity: 0, y: 30, scale: 0.9 },
+        visible: { 
+            opacity: 1, 
+            y: 0, 
+            scale: 1,
+            transition: { duration: 0.6, ease: "easeOut" } 
+        }
     };
+
+    const cardFloatingAnimation = (index) => ({
+        y: [0, -8, 0],
+        transition: {
+            duration: 3 + (index % 3),
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: index * 0.2
+        }
+    });
 
     const tabContent = {
         skills: (
@@ -52,11 +70,18 @@ const Skills = () => {
                 exit="hidden"
             >
                 <div className="skills-grid-pivot">
-                    {skills.map((skill) => (
+                    {skills.map((skill, index) => (
                         <motion.div 
                             key={skill.label} 
                             className="skill-card-pivot glass interactive"
                             variants={itemVariants}
+                            animate={cardFloatingAnimation(index)}
+                            whileHover={{ 
+                                scale: 1.1, 
+                                y: -15,
+                                boxShadow: "0 20px 40px rgba(0, 245, 255, 0.2)",
+                                borderColor: "var(--accent-color)"
+                            }}
                         >
                             <div className="skill-icon-pivot">{skill.icon}</div>
                             <span>{skill.label}</span>
@@ -74,21 +99,25 @@ const Skills = () => {
                 animate="visible"
                 exit="hidden"
             >
-                <motion.div className="timeline-item-pivot glass" variants={itemVariants}>
+                <div className="timeline-item-pivot glass">
                     <div className="timeline-date">2024 - 2028</div>
                     <h3>NxtWave Institute of Advanced Technologies (NIAT)</h3>
-                    <p>
-                        Computer Science Program in Data Science and Artificial Intelligence Specialization.
-                    </p>
-                </motion.div>
+                    <AnimatedText 
+                        text="Computer Science Program in Data Science and Artificial Intelligence Specialization."
+                        direction="bottom"
+                        delay={0.1}
+                    />
+                </div>
 
-                <motion.div className="timeline-item-pivot glass" variants={itemVariants}>
+                <div className="timeline-item-pivot glass">
                     <div className="timeline-date">2024 - 2027</div>
                     <h3>BITS Pilani, Hyderabad Campus</h3>
-                    <p>
-                        Bachelor of Science (BSc) in Computer Science.
-                    </p>
-                </motion.div>
+                    <AnimatedText 
+                        text="Bachelor of Science (BSc) in Computer Science."
+                        direction="bottom"
+                        delay={0.3}
+                    />
+                </div>
             </motion.div>
         ),
 
@@ -100,38 +129,41 @@ const Skills = () => {
                 animate="visible"
                 exit="hidden"
             >
-                <motion.div className="timeline-item-pivot glass" variants={itemVariants}>
+                <div className="timeline-item-pivot glass">
                     <h3>Study Sync AI</h3>
-                    <p>
-                        Developed an AI-based learning assistant application to support students. 
-                        Focused on usability, structured learning, and intelligent response generation.
-                    </p>
-                </motion.div>
+                    <AnimatedText 
+                        text="Developed an AI-based learning assistant application to support students. Focused on usability, structured learning, and intelligent response generation."
+                        direction="bottom"
+                        delay={0.1}
+                    />
+                </div>
 
-                <motion.div className="timeline-item-pivot glass" variants={itemVariants}>
+                <div className="timeline-item-pivot glass">
                     <h3>Telangana Hackathon</h3>
-                    <p>
-                        Participated in a state-level hackathon focused on AI-driven solutions. 
-                        Worked with tools like Vercel V0, Base44, and OpenAI APIs to build applications.
-                    </p>
-                </motion.div>
+                    <AnimatedText 
+                        text="Participated in a state-level hackathon focused on AI-driven solutions. Worked with tools like Vercel V0, Base44, and OpenAI APIs to build applications."
+                        direction="bottom"
+                        delay={0.3}
+                    />
+                </div>
 
-                <motion.div className="timeline-item-pivot glass" variants={itemVariants}>
+                <div className="timeline-item-pivot glass">
                     <h3>Generative AI Workshop</h3>
-                    <p>
-                        Gained hands-on experience in Generative AI, focusing on prompt design, 
-                        content generation, and building AI-powered applications.
-                    </p>
-                </motion.div>
+                    <AnimatedText 
+                        text="Gained hands-on experience in Generative AI, focusing on prompt design, content generation, and building AI-powered applications."
+                        direction="bottom"
+                        delay={0.5}
+                    />
+                </div>
             </motion.div>
         )
     };
 
     return (
         <motion.section 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             id="skills" 
             className="section skills"
@@ -167,4 +199,4 @@ const Skills = () => {
     );
 };
 
-export default Skills;
+export default Skills;

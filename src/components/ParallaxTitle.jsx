@@ -1,23 +1,29 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import TextScramble from './TextScramble';
+import AnimatedText from './AnimatedText';
 
 const ParallaxTitle = ({ title, subTitle }) => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [-50, 50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
+  
   return (
-    <div ref={ref} className="section-header" style={{ position: 'relative', overflow: 'hidden' }}>
-      <motion.div style={{ y, opacity }}>
-        <h2 className="section-title">{title}</h2>
-        <div className="title-underline"></div>
-        {subTitle && <p className="section-subtitle">{subTitle}</p>}
-      </motion.div>
+    <div ref={ref} className="section-header" style={{ position: 'relative', overflow: 'hidden', textAlign: 'center', marginBottom: '4rem' }}>
+      <TextScramble 
+        text={title} 
+        type="h2" 
+        className="section-title" 
+        duration={2}
+      />
+      <div className="title-underline"></div>
+      {subTitle && (
+        <AnimatedText 
+          text={subTitle} 
+          type="p" 
+          className="section-subtitle" 
+          direction="bottom"
+          delay={0.5}
+        />
+      )}
     </div>
   );
 };

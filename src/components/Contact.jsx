@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MessageSquare, Send, MapPin, Phone } from 'lucide-react';
+import Magnetic from './Magnetic';
+import ParallaxTitle from './ParallaxTitle';
+import AnimatedText from './AnimatedText';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -27,54 +30,65 @@ const Contact = () => {
 
     return (
         <motion.section
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
             id="contact"
             className="section contact"
         >
             <div className="container">
-                <div className="section-header">
-                    <h2 className="section-title">Get In Touch</h2>
-                    <div className="title-underline"></div>
-                </div>
+                <ParallaxTitle title="Get In Touch" subTitle="Let's build something extraordinary together" />
 
                 <div className="contact-grid-premium">
-                    <motion.div
-                        className="contact-info-premium"
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <h3>Let's collaborate on something great.</h3>
-                        <p>I'm currently available for freelance work and full-time opportunities. If you have a project that needs a creative touch, I'd love to hear from you.</p>
+                    <div className="contact-info-premium">
+                        <AnimatedText 
+                            text="Let's collaborate on something great." 
+                            type="h3" 
+                            direction="left"
+                            delay={0.1}
+                        />
+                        <AnimatedText 
+                            text="I'm currently available for freelance work and full-time opportunities. If you have a project that needs a creative touch, I'd love to hear from you." 
+                            className="contact-description-pivot"
+                            direction="left"
+                            delay={0.3}
+                        />
 
                         <div className="contact-details">
-                            <div className="contact-detail-item">
+                            <motion.a 
+                                href="mailto:bhavanavemireddy6@gmail.com"
+                                className="contact-detail-item interactive"
+                                whileHover={{ x: 10, backgroundColor: 'rgba(0, 245, 255, 0.05)' }}
+                                style={{ textDecoration: 'none', display: 'flex', color: 'inherit' }}
+                            >
                                 <div className="detail-icon"><Mail size={20} /></div>
                                 <div>
                                     <div className="detail-label">Email</div>
-                                    <div className="detail-value text-highlight">bhavanavemireddy6@gmail.com</div>
+                                    <div className="detail-value text-highlight">
+                                        bhavanavemireddy6@gmail.com
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="contact-detail-item">
+                            </motion.a>
+                            <motion.div 
+                                className="contact-detail-item"
+                                whileHover={{ x: 10 }}
+                            >
                                 <div className="detail-icon"><MapPin size={20} /></div>
                                 <div>
                                     <div className="detail-label">Location</div>
                                     <div className="detail-value">Hyderabad, Telangana</div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     <motion.div
                         className="contact-form-premium glass"
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
                     >
                         <form onSubmit={handleSubmit}>
                             <div className="form-premium-row">
@@ -95,9 +109,13 @@ const Contact = () => {
                                 <label>Message</label>
                                 <textarea name="message" value={formData.message} onChange={handleChange} rows="5" placeholder="Tell me about your project..." className="interactive" required></textarea>
                             </div>
-                            <button type="submit" className="btn btn-primary full-width interactive">
-                                Send Message <Send size={18} className="btn-icon" />
-                            </button>
+                            <div className="form-submit-wrapper">
+                                <Magnetic>
+                                    <button type="submit" className="btn btn-primary full-width interactive">
+                                        Send Message <Send size={18} className="btn-icon" />
+                                    </button>
+                                </Magnetic>
+                            </div>
                         </form>
                     </motion.div>
                 </div>
@@ -107,3 +125,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

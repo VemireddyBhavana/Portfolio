@@ -3,6 +3,7 @@ import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { ExternalLink, Github, Layers } from 'lucide-react';
 import ProjectModal from './ProjectModal';
 import ParallaxTitle from './ParallaxTitle';
+import AnimatedText from './AnimatedText';
 
 const projects = [
     {
@@ -84,7 +85,7 @@ const ProjectCard = ({ project, index, onSelect }) => {
             }}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.8, delay: index * 0.1 }}
             className="project-card-container interactive"
         >
@@ -102,8 +103,18 @@ const ProjectCard = ({ project, index, onSelect }) => {
                         <Layers size={14} className="meta-icon" />
                         <span>Featured Project</span>
                     </div>
-                    <h3>{project.title}</h3>
-                    <p>{project.subtitle}</p>
+                    <AnimatedText 
+                        text={project.title} 
+                        type="h3" 
+                        direction="left"
+                        delay={0.1}
+                    />
+                    <AnimatedText 
+                        text={project.subtitle} 
+                        type="p" 
+                        direction="left"
+                        delay={0.3}
+                    />
                     <div className="project-tags-premium">
                         {project.tags.map(tag => <span key={tag}>{tag}</span>)}
                     </div>
@@ -134,7 +145,7 @@ const Projects = () => {
         <motion.section 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             id="projects" 
             className="section projects"
