@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Rocket } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import Magnetic from './Magnetic';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -43,12 +43,14 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
         >
             <div className="nav-container-premium">
-                <Link to="/" className="logo-premium interactive">
-                    <div className="logo-icon-wrapper">
-                        <Rocket size={20} className="logo-icon" />
-                    </div>
-                    <span>BHAVANA<span>.DEV</span></span>
-                </Link>
+                <Magnetic>
+                    <Link to="/" className="logo-premium interactive">
+                        <div className="logo-icon-wrapper">
+                            <Rocket size={20} className="logo-icon" />
+                        </div>
+                        <span>BHAVANA<span>.DEV</span></span>
+                    </Link>
+                </Magnetic>
 
                 <div className="nav-links-premium">
                     {navLinks.map((link, i) => (
@@ -65,17 +67,19 @@ const Navbar = () => {
                             <div className="link-hover-line"></div>
                         </motion.a>
                     ))}
-                    <motion.a 
-                        href="#contact" 
-                        onClick={(e) => handleNavClick(e, 'contact')}
-                        className="btn btn-primary btn-sm interactive"
-                        style={{ marginLeft: '1rem' }}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.7 }}
-                    >
-                        Let's Talk
-                    </motion.a>
+                    <Magnetic>
+                        <motion.a 
+                            href="#contact" 
+                            onClick={(e) => handleNavClick(e, 'contact')}
+                            className="btn btn-primary btn-sm interactive"
+                            style={{ marginLeft: '1rem' }}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.7 }}
+                        >
+                            Let's Talk
+                        </motion.a>
+                    </Magnetic>
                 </div>
 
                 <div className="mobile-toggle interactive" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>

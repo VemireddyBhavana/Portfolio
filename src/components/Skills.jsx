@@ -30,44 +30,66 @@ const Skills = () => {
     ];
 
     const containerVariants = {
-        hidden: { opacity: 0 },
+        hidden: { opacity: 0, scale: 0.95 },
         visible: {
             opacity: 1,
+            scale: 1,
             transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2
+                staggerChildren: 0.05,
+                delayChildren: 0.1,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        },
+        exit: {
+            opacity: 0,
+            scale: 1.05,
+            transition: {
+                staggerChildren: 0.02,
+                staggerDirection: -1,
+                duration: 0.3
             }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 30, scale: 0.9 },
+        hidden: { opacity: 0, y: 30, scale: 0.7, filter: 'blur(10px)' },
         visible: { 
             opacity: 1, 
             y: 0, 
             scale: 1,
-            transition: { duration: 0.6, ease: "easeOut" } 
+            filter: 'blur(0px)',
+            transition: { 
+                type: 'spring',
+                damping: 15,
+                stiffness: 150
+            } 
+        },
+        exit: {
+            opacity: 0,
+            scale: 0.5,
+            transition: { duration: 0.2 }
         }
     };
 
     const cardFloatingAnimation = (index) => ({
-        y: [0, -8, 0],
+        y: [0, -10, 0],
         transition: {
-            duration: 3 + (index % 3),
+            duration: 4 + (index % 3),
             repeat: Infinity,
             ease: "easeInOut",
-            delay: index * 0.2
+            delay: index * 0.1
         }
     });
 
     const tabContent = {
         skills: (
             <motion.div 
+                key="skills-tab"
                 className="skills-tab-content"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                exit="hidden"
+                exit="exit"
             >
                 <div className="skills-grid-pivot">
                     {skills.map((skill, index) => (
@@ -82,6 +104,7 @@ const Skills = () => {
                                 boxShadow: "0 20px 40px rgba(0, 245, 255, 0.2)",
                                 borderColor: "var(--accent-color)"
                             }}
+                            style={{ willChange: 'transform' }}
                         >
                             <div className="skill-icon-pivot">{skill.icon}</div>
                             <span>{skill.label}</span>
@@ -93,11 +116,12 @@ const Skills = () => {
 
         education: (
             <motion.div 
+                key="education-tab"
                 className="timeline-pivot"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                exit="hidden"
+                exit="exit"
             >
                 <div className="timeline-item-pivot glass">
                     <div className="timeline-date">2024 - 2028</div>
@@ -123,11 +147,12 @@ const Skills = () => {
 
         experience: (
             <motion.div 
+                key="experience-tab"
                 className="timeline-pivot"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                exit="hidden"
+                exit="exit"
             >
                 <div className="timeline-item-pivot glass">
                     <h3>Study Sync AI</h3>

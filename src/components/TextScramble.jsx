@@ -18,7 +18,7 @@ const TextScramble = ({
     const [displayText, setDisplayText] = useState('');
     const ref = useRef(null);
     const isInView = useInView(ref, { once: false, amount: 0.5 });
-    const chars = '!<>-_\\/[]{}—=+*^?#________';
+    const chars = '!<>-_\\/[]{}—=+*^?#$@%&()0123456789ABCDEF';
     
     useEffect(() => {
         if (!isInView) {

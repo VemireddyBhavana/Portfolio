@@ -9,6 +9,8 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import FloatingShapes from './components/FloatingShapes';
+import ScrollProgress from './components/ScrollProgress';
 
 // Pages
 import NexusShowcase from './pages/NexusShowcase';
@@ -56,7 +58,8 @@ const Home = () => {
 
   return (
     <div className="portfolio-layout" onMouseMove={handleMouseMove}>
-      <motion.div className="scroll-progress-bar" style={{ scaleX }} />
+      <ScrollProgress />
+      <FloatingShapes />
       <div className="liquid-blob-bg">
         <motion.div 
           className="blob-item blob-1" 

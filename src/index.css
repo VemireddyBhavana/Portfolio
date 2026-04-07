@@ -12,6 +12,8 @@
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
     --sidebar-width: 100px;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
 }
 
 .portfolio-layout {
@@ -132,21 +134,26 @@
 }
 
 .custom-cursor {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background: var(--accent-color);
     border-radius: 50%;
     position: fixed;
     top: 0;
     left: 0;
     pointer-events: none;
-    z-index: 10000;
-    /* Removed transition: will be handled by Framer Motion for smoothness */
+    z-index: 100000;
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.scroll-progress-line {
+    box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
+    filter: brightness(1.2);
 }
 
 .custom-cursor-outline {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border: 1.5px solid var(--accent-color);
     border-radius: 50%;
     position: fixed;
@@ -154,6 +161,8 @@
     left: 0;
     pointer-events: none;
     z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .social-circle-btn {
@@ -233,19 +242,46 @@ h1, h2, h3, h4 {
     font-size: 3rem;
     text-align: center;
     margin-bottom: 3rem;
-    position: relative;
+    border-radius: 2px;
 }
 
-.section-title::after {
+.section-header {
+    position: relative;
+    overflow: visible;
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-underline {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    margin: 1rem auto 1.5rem;
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+.title-underline::before {
     content: '';
     position: absolute;
-    bottom: -10px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
     background: var(--accent-color);
-    border-radius: 2px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-color-muted);
+    max-width: 500px;
 }
 
 /* Scramble & Animation Utilities */
@@ -350,9 +386,11 @@ h1, h2, h3, h4 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%; /* Keeps it circular if it's a normal photo */
+    border-radius: 50%; /* Keeps it circular */
     z-index: 10;
     position: relative;
+    filter: contrast(1.05) brightness(1.05); /* Subtle enhancement */
+    border: 4px solid rgba(15, 23, 26, 0.5); /* Inner border for depth */
 }
 
 .profile-glow-ring {
@@ -363,11 +401,10 @@ h1, h2, h3, h4 {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 3px solid var(--accent-color);
+    border: 2px solid var(--accent-color);
     box-shadow: 
-        0 0 40px var(--accent-color),
-        0 0 80px rgba(0, 245, 255, 0.3),
-        inset 0 0 20px var(--accent-color);
+        0 0 30px var(--accent-color),
+        0 0 60px rgba(0, 245, 255, 0.2);
     z-index: 1;
 }
 
@@ -390,17 +427,13 @@ h1, h2, h3, h4 {
     z-index: 0;
 }
 
-@keyframes profile-breathe {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.05); opacity: 1; }
-}
-
 @keyframes profile-pulse {
     0% { transform: scale(1); opacity: 0; }
     50% { opacity: 0.3; }
     100% { transform: scale(1.2); opacity: 0; }
 }
 
+/* Hero Section Specifics */
 .hero-text-premium {
     max-width: 650px;
     display: flex;
@@ -413,13 +446,15 @@ h1, h2, h3, h4 {
 }
 
 
-/* MAKE ABOUT TEXT SAME AS HERO */
-.about-layout-pivot > div:last-child {
+/* Style the text container specifically */
+.about-text-container-pivot {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Center horizontally now that photo is gone */
     justify-content: center;
-    max-width: 600px;
+    max-width: 800px; /* Wider for full section focus */
+    text-align: center;
+    flex: 1;
 }
 
 
@@ -591,19 +626,46 @@ h1, h2, h3, h4 {
 
 /* Glass Card */
 .glass {
-    background: var(--glass-bg);
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(0, 245, 255, 0.08), 
+        transparent 40%
+    ), var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 2rem;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.05), 
+        transparent 40%
+    );
+    z-index: 0;
+    pointer-events: none;
+}
+
+.glass > * {
+    position: relative;
+    z-index: 1;
 }
 
 .glass:hover {
-    border-color: var(--accent-color);
+    border-color: rgba(0, 245, 255, 0.4);
     transform: translateY(-5px);
-    box-shadow: var(--neon-shadow);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 245, 255, 0.1);
 }
 
 /* About Section Pivot */
@@ -615,16 +677,35 @@ h1, h2, h3, h4 {
 .about-layout-pivot {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 5rem;
+    justify-content: center; /* Center them as a group */
+    gap: 7rem; /* Wider gap for more breathing room */
+    min-height: 500px;
 }
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
     .about-layout-pivot {
+        flex-direction: column-reverse; /* Text first (which is the first child), Image second. Wait, column-reverse makes image first? */
+        /* If About.jsx has Text, then Image:
+           [Text] [Image]
+           Mobile: [Image]
+                   [Text]
+           If we want Text then Image: flex-direction: column
+        */
         flex-direction: column;
         text-align: center;
+        gap: 3rem;
+    }
+    .about-text-container-pivot {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+    }
+    .profile-section-premium {
+        width: 280px;
+        height: 280px;
+        margin-bottom: 2rem;
     }
 }
 
@@ -777,7 +858,9 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 1100px) {
-    .about-layout-pivot { grid-template-columns: 1fr; gap: 4rem; }
+    .about-layout-pivot { 
+        gap: 4rem; 
+    }
     .about-tabs-container { padding: 2rem; }
 }
 
@@ -928,6 +1011,7 @@ h1, h2, h3, h4 {
 
 /* Projects Section */
 .projects-grid-premium {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
@@ -950,12 +1034,38 @@ h1, h2, h3, h4 {
     flex-direction: column;
     overflow: hidden;
     padding: 0 !important;
+    will-change: transform;
 }
 
 .project-image-wrapper {
     height: 250px;
     position: relative;
     overflow: hidden;
+    will-change: transform;
+}
+
+.project-scan-line {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 245, 255, 0.05),
+        rgba(0, 245, 255, 0.1),
+        rgba(0, 245, 255, 0.05),
+        transparent
+    );
+    z-index: 2;
+    pointer-events: none;
+    animation: scan-move 4s linear infinite;
+}
+
+@keyframes scan-move {
+    0% { top: -100%; }
+    100% { top: 100%; }
 }
 
 .project-inner-img {
@@ -1102,6 +1212,13 @@ h1, h2, h3, h4 {
     align-items: start;
 }
 
+@media (max-width: 968px) {
+    .contact-grid-premium {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+}
+
 .contact-info-premium h3 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
@@ -1165,6 +1282,9 @@ h1, h2, h3, h4 {
 
 .form-group-premium {
     margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 5px;
 }
 
 .form-group-premium label {
@@ -1173,6 +1293,7 @@ h1, h2, h3, h4 {
     color: var(--text-color-muted);
     font-size: 0.9rem;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .form-group-premium input,
@@ -1184,16 +1305,34 @@ h1, h2, h3, h4 {
     border-radius: 12px;
     color: var(--text-color);
     font-family: var(--font-body);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     outline: none;
 }
 
 .form-group-premium input:focus,
 .form-group-premium textarea:focus {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: var(--accent-color);
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.15);
-    transform: translateY(-2px);
+    background: rgba(0, 245, 255, 0.02);
+    border-color: rgba(0, 245, 255, 0.2);
+}
+
+.form-group-premium:focus-within label {
+    color: var(--accent-color);
+}
+
+.form-line-pivot {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateX(-50%);
+}
+
+.form-group-premium:focus-within .form-line-pivot {
+    width: 100%;
 }
 
 .form-submit-wrapper {
@@ -1751,12 +1890,18 @@ h1, h2, h3, h4 {
 .about-layout-pivot {
     display: flex;
     align-items: center;
-    gap: 5rem;
+    justify-content: center;
+    gap: 6rem;
+    width: 100%;
 }
 
 /* TEXT SIDE WIDTH */
-.about-layout-pivot > div:last-child {
-    max-width: 650px;
+.about-text-container-pivot {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 /* MOBILE FIX */
@@ -1764,6 +1909,12 @@ h1, h2, h3, h4 {
     .about-layout-pivot {
         flex-direction: column !important;
         text-align: center !important;
+        gap: 3rem;
+    }
+    
+    .about-text-container-pivot {
+        align-items: center;
+        max-width: 100%;
     }
 }
 
@@ -1807,4 +1958,173 @@ h1, h2, h3, h4 {
     color: var(--bg-color);
     box-shadow: 0 0 15px var(--accent-color);
     border-color: var(--accent-color);
+}
+
+/* ===== CONTACT SECTION PREMIUM ===== */
+
+.contact {
+    position: relative;
+    z-index: 10;
+}
+
+.contact-grid-premium {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    margin-top: 4rem;
+}
+
+.contact-info-premium {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-description-pivot {
+    font-size: 1.1rem;
+    color: var(--text-color-muted);
+    line-height: 1.8;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.contact-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.detail-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-label {
+    font-size: 0.8rem;
+    color: var(--text-color-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detail-value {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.contact-form-premium {
+    padding: 3rem !important;
+    border-radius: 24px !important;
+}
+
+.form-premium-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group-premium {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group-premium label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-color-muted);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.form-group-premium input,
+.form-group-premium textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    color: #fff;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+}
+
+.form-group-premium input:focus,
+.form-group-premium textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(0, 245, 255, 0.05);
+}
+
+.form-line-pivot {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.form-group-premium input:focus ~ .form-line-pivot,
+.form-group-premium textarea:focus ~ .form-line-pivot {
+    width: 100%;
+}
+
+.form-submit-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-primary.full-width {
+    width: auto;
+    min-width: 280px;
+    height: 60px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.3);
+}
+
+.btn-primary.full-width:hover {
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.5);
+    transform: translateY(-5px);
+}
+
+@media (max-width: 968px) {
+    .contact-grid-premium {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-premium-row {
+        grid-template-columns: 1fr;
+    }
+    .contact-form-premium {
+        padding: 2rem !important;
+    }
 }

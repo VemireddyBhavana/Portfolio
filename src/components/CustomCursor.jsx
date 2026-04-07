@@ -43,6 +43,10 @@ const CustomCursor = () => {
   const moveCursor = useCallback((e) => {
     cursorX.set(e.clientX);
     cursorY.set(e.clientY);
+    
+    // Update CSS variables for mouse-glow effect
+    document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
   }, [cursorX, cursorY]);
 
   const handleMouseOver = useCallback((e) => {
@@ -89,20 +93,34 @@ const CustomCursor = () => {
 
   const variants = {
     default: {
-      dot: { scale: 1, opacity: 1 },
-      ring: { scale: 1, opacity: 0.5, borderWidth: '1.5px' }
+      dot: { scale: 1, opacity: 1, backgroundColor: 'var(--accent-color)' },
+      ring: { scale: 1, opacity: 0.3, borderWidth: '1.5px', borderColor: 'var(--accent-color)' }
     },
     hover: {
       dot: { scale: 0, opacity: 0 },
-      ring: { scale: 1.8, opacity: 0.3, backgroundColor: 'rgba(0, 245, 255, 0.2)', borderWidth: '0px' }
+      ring: { 
+        scale: 1.5, 
+        opacity: 1, 
+        backgroundColor: 'rgba(0, 245, 255, 0.15)', 
+        borderWidth: '0px',
+        backdropFilter: 'blur(4px)',
+        mixBlendMode: 'difference' 
+      }
     },
     magnetic: {
       dot: { scale: 0, opacity: 0 },
-      ring: { scale: 2.2, opacity: 0.4, backgroundColor: 'rgba(0, 245, 255, 0.15)', borderWidth: '2px' }
+      ring: { 
+        scale: 2, 
+        opacity: 1, 
+        backgroundColor: 'rgba(0, 245, 255, 0.2)', 
+        borderWidth: '2px',
+        borderColor: 'var(--accent-color)',
+        backdropFilter: 'blur(2px)'
+      }
     },
     click: {
-      dot: { scale: 0.8 },
-      ring: { scale: 1.2, opacity: 0.8, borderWidth: '3px' }
+      dot: { scale: 0.5, opacity: 1 },
+      ring: { scale: 0.8, opacity: 0.8, borderWidth: '4px', borderColor: 'var(--accent-color)' }
     }
   };
 

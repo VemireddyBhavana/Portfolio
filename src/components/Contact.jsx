@@ -56,30 +56,44 @@ const Contact = () => {
                         />
 
                         <div className="contact-details">
-                            <motion.a 
-                                href="mailto:bhavanavemireddy6@gmail.com"
-                                className="contact-detail-item interactive"
-                                whileHover={{ x: 10, backgroundColor: 'rgba(0, 245, 255, 0.05)' }}
-                                style={{ textDecoration: 'none', display: 'flex', color: 'inherit' }}
-                            >
-                                <div className="detail-icon"><Mail size={20} /></div>
-                                <div>
-                                    <div className="detail-label">Email</div>
-                                    <div className="detail-value text-highlight">
-                                        bhavanavemireddy6@gmail.com
-                                    </div>
-                                </div>
-                            </motion.a>
-                            <motion.div 
-                                className="contact-detail-item"
-                                whileHover={{ x: 10 }}
-                            >
-                                <div className="detail-icon"><MapPin size={20} /></div>
-                                <div>
-                                    <div className="detail-label">Location</div>
-                                    <div className="detail-value">Hyderabad, Telangana</div>
-                                </div>
-                            </motion.div>
+                            {[
+                                { href: "mailto:bhavanavemireddy6@gmail.com", icon: <Mail size={20} />, label: "Email", value: "bhavanavemireddy6@gmail.com", isLink: true },
+                                { icon: <MapPin size={20} />, label: "Location", value: "Hyderabad, Telangana", isLink: false }
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.5 + (i * 0.1) }}
+                                >
+                                    {item.isLink ? (
+                                        <motion.a 
+                                            href={item.href}
+                                            className="contact-detail-item interactive"
+                                            whileHover={{ x: 10, backgroundColor: 'rgba(0, 245, 255, 0.05)' }}
+                                            style={{ textDecoration: 'none', display: 'flex', color: 'inherit' }}
+                                        >
+                                            <div className="detail-icon">{item.icon}</div>
+                                            <div>
+                                                <div className="detail-label">{item.label}</div>
+                                                <div className="detail-value text-highlight">{item.value}</div>
+                                            </div>
+                                        </motion.a>
+                                    ) : (
+                                        <motion.div 
+                                            className="contact-detail-item"
+                                            whileHover={{ x: 10 }}
+                                        >
+                                            <div className="detail-icon">{item.icon}</div>
+                                            <div>
+                                                <div className="detail-label">{item.label}</div>
+                                                <div className="detail-value">{item.value}</div>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
@@ -95,19 +109,23 @@ const Contact = () => {
                                 <div className="form-group-premium">
                                     <label>Name</label>
                                     <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="interactive" required />
+                                    <div className="form-line-pivot"></div>
                                 </div>
                                 <div className="form-group-premium">
                                     <label>Email</label>
                                     <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="interactive" required />
+                                    <div className="form-line-pivot"></div>
                                 </div>
                             </div>
                             <div className="form-group-premium">
                                 <label>Subject</label>
                                 <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Project Inquiry" className="interactive" required />
+                                <div className="form-line-pivot"></div>
                             </div>
                             <div className="form-group-premium">
                                 <label>Message</label>
                                 <textarea name="message" value={formData.message} onChange={handleChange} rows="5" placeholder="Tell me about your project..." className="interactive" required></textarea>
+                                <div className="form-line-pivot"></div>
                             </div>
                             <div className="form-submit-wrapper">
                                 <Magnetic>

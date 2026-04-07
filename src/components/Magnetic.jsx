@@ -6,6 +6,9 @@ export default function Magnetic({ children }) {
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
     const handleMouseMove = (e) => {
+        // Disable on touch devices or small screens
+        if (window.innerWidth <= 968) return;
+
         const { clientX, clientY } = e;
         const { height, width, left, top } = ref.current.getBoundingClientRect();
         const middleX = clientX - (left + width / 2);

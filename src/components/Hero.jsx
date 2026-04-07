@@ -66,14 +66,44 @@ const Hero = () => {
       <div className="container hero-container-pivot">
         <div className="hero-content-pivot">
           <motion.div 
+            className="profile-section-premium"
+            initial={{ scale: 0.8, opacity: 0, x: -30 }}
+            animate={{ scale: 1, opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            style={{ x: useTransform(mouseXSpring, (x) => x * -1.2), y: useTransform(mouseYSpring, (y) => y * -1.2) }}
+          >
+            <div className="profile-image-wrapper">
+              <div className="profile-glow-ring"></div>
+              <div className="profile-glow-ring-outer"></div>
+              <img 
+                src="https://res.cloudinary.com/de8opipom/image/upload/v1774977788/photo_li1vaw.jpg" 
+                alt="Bhavana Profile" 
+                className="profile-image-actual"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div 
             className="hero-text-premium"
             style={{ x: mouseXSpring, y: mouseYSpring }}
+            animate={{ 
+              y: [0, -10, 0],
+            }}
+            transition={{
+              y: {
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              },
+              duration: 1, // Entry duration
+              ease: "easeOut"
+            }}
           >
              <AnimatedText 
                 text="Hello I'm" 
                 type="span" 
                 className="hello-text" 
-                direction="left" 
+                direction="right" 
                 delay={0.4} 
              />
              <TextScramble 
@@ -111,22 +141,24 @@ const Hero = () => {
                   </a>
                 </Magnetic>
                 <Magnetic>
-                  <motion.a 
-                    href="mailto:bhavanavemireddy6@gmail.com"
+                  <motion.button 
+                    onClick={() => {
+                      const element = document.getElementById('contact');
+                      if (element) element.scrollIntoView({ behavior: 'smooth' });
+                    }}
                     className="btn btn-outline"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ textDecoration: 'none' }}
                   >
                     Let's Talk
-                  </motion.a>
+                  </motion.button>
                 </Magnetic>
               </div>
 
               <div className="hero-socials">
                 {[
-                  { icon: <Github size={20} />, link: "https://github.com/VemireddyBhavana" },
-                  { icon: <Linkedin size={20} />, link: "https://linkedin.com/in/bhavana-vemireddy-426b382a5" },
+                  { icon: <Github size={20} />, link: "https://github.com/Bhavana80770" },
+                  { icon: <Linkedin size={20} />, link: "https://www.linkedin.com/in/vemireddy-bhavana/" },
                   { icon: <Mail size={20} />, link: "mailto:bhavanavemireddy6@gmail.com" },
                   { icon: <Twitter size={20} />, link: "#" },
                   { icon: <Youtube size={20} />, link: "#" }
@@ -145,24 +177,6 @@ const Hero = () => {
                   </Magnetic>
                 ))}
               </div>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            className="profile-section-premium"
-            initial={{ scale: 0.8, opacity: 0, x: 30 }}
-            animate={{ scale: 1, opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            style={{ x: useTransform(mouseXSpring, (x) => x * -1.2), y: useTransform(mouseYSpring, (y) => y * -1.2) }}
-          >
-            <div className="profile-image-wrapper">
-              <div className="profile-glow-ring"></div>
-              <div className="profile-glow-ring-outer"></div>
-              <img 
-                src="https://res.cloudinary.com/de8opipom/image/upload/v1774977788/photo_li1vaw.jpg" 
-                alt="Bhavana Profile" 
-                className="profile-image-actual"
-              />
             </div>
           </motion.div>
         </div>

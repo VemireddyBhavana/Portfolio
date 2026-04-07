@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring, useScroll } from 'framer-motion';
 import { ExternalLink, Github, Layers } from 'lucide-react';
 import ProjectModal from './ProjectModal';
 import ParallaxTitle from './ParallaxTitle';
@@ -49,13 +49,16 @@ const ProjectCard = ({ project, index, onSelect }) => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
-    const mouseXSpring = useSpring(x);
-    const mouseYSpring = useSpring(y);
+    const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
+    const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
 
     const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
     const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
 
     const handleMouseMove = (e) => {
+        // Disable 3D tilt on mobile or if not using a cursor
+        if (window.innerWidth <= 968) return;
+        
         if (!cardRef.current) return;
         const rect = cardRef.current.getBoundingClientRect();
         const width = rect.width;
@@ -83,15 +86,20 @@ const ProjectCard = ({ project, index, onSelect }) => {
                 rotateX,
                 transformStyle: "preserve-3d",
             }}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
+            initial={{ opacity: 0, scale: 0.8, y: 100, rotateX: 10 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ 
+                duration: 1.5, 
+                ease: [0.22, 1, 0.36, 1],
+                delay: index * 0.2 
+            }}
             className="project-card-container interactive"
         >
             <div className="project-card-inner glass" style={{ transform: "translateZ(50px)" }}>
                 <div className="project-image-wrapper">
                     <img src={project.image} alt={project.title} className="project-inner-img" />
+                    <div className="project-scan-line"></div>
                     <div className="project-image-overlay">
                         <button className="view-project-btn" onClick={() => onSelect(project)}>
                             View Project Details
@@ -130,6 +138,7 @@ const ProjectCard = ({ project, index, onSelect }) => {
 
 const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null);
+    const gridRef = useRef(null);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -140,6 +149,18 @@ const Projects = () => {
             }
         }
     };
+
+    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 968 : false;
+    const { scrollYProgress } = useScroll({
+        target: gridRef,
+        offset: ["start end", "end start"]
+    });
+
+    const rotateXRaw = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [8, -8]);
+    const skewXRaw = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [3, -3]);
+    
+    const rotateX = useSpring(rotateXRaw, { stiffness: 100, damping: 30 });
+    const skewX = useSpring(skewXRaw, { stiffness: 100, damping: 30 });
 
     return (
         <motion.section 
@@ -154,11 +175,13 @@ const Projects = () => {
                 <ParallaxTitle title="Selected Works" subTitle="Handcrafted Digital Experiences" />
                 
                 <motion.div 
+                    ref={gridRef}
                     className="projects-grid-premium"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
+                    style={{ rotateX, skewX, transformStyle: "preserve-3d" }}
                 >
                     {projects.map((project, index) => (
                         <ProjectCard 

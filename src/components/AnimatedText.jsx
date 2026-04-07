@@ -17,6 +17,7 @@ const AnimatedText = ({
     type = 'p',
     className = '',
     direction = 'left',
+    blur = false,
     delay = 0,
     once = false,
     stagger = 0.02
@@ -27,12 +28,14 @@ const AnimatedText = ({
         hidden: {
             opacity: 0,
             x: direction === 'left' ? -30 : direction === 'right' ? 30 : 0,
-            y: direction === 'bottom' ? 30 : 0
+            y: direction === 'bottom' ? 30 : 0,
+            filter: blur ? 'blur(8px)' : 'none'
         },
         visible: {
             opacity: 1,
             x: 0,
             y: 0,
+            filter: blur ? 'blur(0px)' : 'none',
             transition: {
                 duration: 0.8,
                 delay,
@@ -43,11 +46,16 @@ const AnimatedText = ({
     };
 
     const childVariants = {
-        hidden: { opacity: 0, y: 10 },
+        hidden: { 
+            opacity: 0, 
+            y: 10,
+            filter: blur ? 'blur(5px)' : 'none'
+        },
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.5, ease: "easeOut" }
+            filter: blur ? 'blur(0px)' : 'none',
+            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
         }
     };
 

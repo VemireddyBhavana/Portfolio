@@ -7,7 +7,7 @@ const ParallaxTitle = ({ title, subTitle }) => {
   const ref = useRef(null);
   
   return (
-    <div ref={ref} className="section-header" style={{ position: 'relative', overflow: 'hidden', textAlign: 'center', marginBottom: '4rem' }}>
+    <div ref={ref} className="section-header">
       <TextScramble 
         text={title} 
         type="h2" 
@@ -21,7 +21,7 @@ const ParallaxTitle = ({ title, subTitle }) => {
           type="p" 
           className="section-subtitle" 
           direction="bottom"
-          delay={0.5}
+          delay={0.4}
         />
       )}
     </div>
