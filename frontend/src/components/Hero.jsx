@@ -93,6 +93,7 @@ const Hero = () => {
             >
               <div className="profile-glow-ring"></div>
               <div className="profile-white-shine-ring"></div>
+              <div className="profile-white-aura"></div>
               <div className="profile-glow-ring-outer"></div>
               <motion.div 
                 className="profile-shine"
