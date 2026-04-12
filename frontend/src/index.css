@@ -50,6 +50,28 @@
     overflow: hidden;
 }
 
+.profile-white-shine-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 105%; /* Slightly larger than the cyan ring */
+    height: 105%;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 40px rgba(255, 255, 255, 0.3);
+    z-index: 1;
+    animation: white-shine-pulse 3s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes white-shine-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+}
+
 .profile-shine {
     position: absolute;
     top: 0;
