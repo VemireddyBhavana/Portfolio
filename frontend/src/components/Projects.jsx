@@ -14,7 +14,7 @@ const projects = [
         tags: ['React', 'Three.js', 'CSS3'],
         desc: 'A high-performance cloud dashboard featuring real-time data streaming and glassmorphism design patterns.',
         link: '/nexus',
-        github: 'https://github.com/Bhavana80770/portfilo'
+        github: 'https://github.com/VemireddyBhavana/portfilo'
     },
     {
         id: 'Aether VR',
@@ -24,7 +24,7 @@ const projects = [
         tags: ['Three.js', 'GSAP', 'HTML5'],
         desc: 'An experimental landing page showcasing advanced WebGL shaders and immersive 3D navigation.',
         link: '/aether',
-        github: 'https://github.com/Bhavana80770/portfilo'
+        github: 'https://github.com/VemireddyBhavana/portfilo'
     },
     {
         id: 'Lumina SaaS',
@@ -34,7 +34,7 @@ const projects = [
         tags: ['Next.js', 'Tailwind', 'Framer'],
         desc: 'A modern enterprise platform structure with focus on performance, scalability, and UX.',
         link: '/lumina',
-        github: 'https://github.com/Bhavana80770/portfilo'
+        github: 'https://github.com/VemireddyBhavana/portfilo'
     },
     {
         id: 'Sentinel AI',
@@ -44,7 +44,7 @@ const projects = [
         tags: ['React', 'Python', 'D3.js'],
         desc: 'An intelligent monitoring interface for distributed AI models built with beautiful dark aesthetics.',
         link: '/sentinel',
-        github: 'https://github.com/Bhavana80770/portfilo'
+        github: 'https://github.com/VemireddyBhavana/portfilo'
     }
 ];
 

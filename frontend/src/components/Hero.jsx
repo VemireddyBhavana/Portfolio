@@ -185,7 +185,7 @@ const Hero = () => {
 
               <div className="hero-socials">
                 {[
-                  { icon: <Github size={20} />, link: "https://github.com/Bhavana80770" },
+                  { icon: <Github size={20} />, link: "https://github.com/VemireddyBhavana" },
                   { icon: <Linkedin size={20} />, link: "https://www.linkedin.com/in/vemireddy-bhavana/" },
                   { icon: <Mail size={20} />, link: "mailto:bhavanavemireddy6@gmail.com" },
                   { icon: <Twitter size={20} />, link: "#" },
