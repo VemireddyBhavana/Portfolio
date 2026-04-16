@@ -77,7 +77,6 @@ const Sidebar = () => {
             </motion.div>
           </Magnetic>
         ))}
-        <div className="sidebar-divider" style={{ width: '20px', height: '1px', background: 'var(--glass-border)', margin: '0.2rem auto' }}></div>
         <Magnetic>
            <ThemeToggle />
         </Magnetic>

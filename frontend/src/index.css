@@ -163,7 +163,7 @@
 .sidebar-icons {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
+    gap: 1.5rem;
 }
 
 .sidebar-icon-wrapper {
@@ -181,6 +181,14 @@
 
 .sidebar-icon-wrapper.active {
     transform: scale(1.1);
+}
+
+.sidebar-divider {
+    width: 24px;
+    height: 1px;
+    background: var(--glass-border);
+    margin-bottom: 0.5rem;
+    opacity: 0.4;
 }
 
 .sidebar-tooltip {

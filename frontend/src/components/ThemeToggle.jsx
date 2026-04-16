@@ -25,7 +25,7 @@ const ThemeToggle = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '10px',
+        padding: '0px',
         color: 'var(--text-color-muted)',
         transition: 'color 0.3s ease'
       }}
