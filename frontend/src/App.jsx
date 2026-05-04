@@ -11,7 +11,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Certifications from './components/Certifications';
 import FloatingShapes from './components/FloatingShapes';
-import ScrollProgress from './components/ScrollProgress';
+// import ScrollProgress from './components/ScrollProgress'; // Removed blue bar
 import FluidCursor from './components/FluidCursor';
 import FluidBackground from './components/FluidBackground';
 import NeonCursor from './components/NeonCursor';
@@ -74,7 +74,7 @@ const Home = () => {
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
     >
-      <ScrollProgress />
+      {/* <ScrollProgress /> - Removed blue bar */}
       <FloatingShapes />
       <div className="liquid-blob-bg">
         <motion.div 

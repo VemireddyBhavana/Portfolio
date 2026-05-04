@@ -122,7 +122,6 @@ const ProjectCard = ({ project, index, onSelect }) => {
             <div className="project-card-inner glass" style={{ transform: "translateZ(50px)" }}>
                 <div className="project-image-wrapper">
                     <img src={project.image} alt={project.title} className="project-inner-img" />
-                    <div className="project-scan-line"></div>
                     <div className="project-image-overlay">
                         <button className="view-project-btn" onClick={() => onSelect(project)}>
                             View Project Details
