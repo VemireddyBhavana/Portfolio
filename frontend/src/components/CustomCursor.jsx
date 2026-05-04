@@ -125,7 +125,7 @@ const CustomCursor = () => {
   };
 
   return (
-    <div className="custom-cursor-container" style={{ position: 'fixed', top: 0, left: 0, pointerEvents: 'none', zIndex: 99999 }}>
+    <div className="custom-cursor-container" style={{ position: 'fixed', top: 0, left: 0, pointerEvents: 'none', zIndex: 99999999 }}>
       {/* Outer Ring */}
       <motion.div
         className="custom-cursor-outline"

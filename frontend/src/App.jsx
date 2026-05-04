@@ -91,9 +91,6 @@ const Home = () => {
         />
       </div>
       <FluidBackground />
-      <CustomCursor />
-      <FluidCursor />
-      <NeonCursor />
       <Sidebar />
       <main className="main-viewport">
         <Hero />
@@ -103,6 +100,9 @@ const Home = () => {
         <Projects />
         <Contact />
       </main>
+      <CustomCursor />
+      <FluidCursor />
+      <NeonCursor />
     </div>
   );
 };

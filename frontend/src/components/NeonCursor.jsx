@@ -93,7 +93,7 @@ const NeonCursor = () => {
                 width: '100vw',
                 height: '100vh',
                 pointerEvents: 'none',
-                zIndex: 5000000, // Topmost layer
+                zIndex: 99999999, // Topmost layer
                 mixBlendMode: isDarkMode ? 'screen' : 'multiply'
             }}
         />
