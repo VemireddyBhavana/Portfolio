@@ -155,6 +155,7 @@ canvas[style*="pointer-events: none"],
 .portfolio-layout {
     display: flex;
     min-height: 100vh;
+    position: relative;
 }
 
 .main-viewport {
@@ -162,6 +163,7 @@ canvas[style*="pointer-events: none"],
     margin-left: 0;
     width: 100%;
     padding-bottom: 100px;
+    position: relative;
 }
 
 @media (max-width: 968px) {
