@@ -90,7 +90,6 @@ const StudySyncShowcase = ({ onClose }) => {
                         <span style={{ color: '#00f5ff', fontWeight: '800', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <Trophy size={24} /> Winner – NIAT x Base44 Hackathon
                         </span>
-                        <span style={{ background: 'rgba(255,255,255,0.1)', color: '#94a3b8', padding: '0.6rem 1.2rem', borderRadius: '12px', fontSize: '0.9rem', fontWeight: '700' }}>Built in 24 hours</span>
                     </div>
                 </div>
 
