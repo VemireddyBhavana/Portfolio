@@ -173,6 +173,7 @@ const AwardCard = ({ item, index, onSelect }) => {
             <div className="award-content-v2" style={{ transform: isMobile ? "none" : "translateZ(20px)" }}>
                 <div className="award-meta-v2">
                     <span className="award-date-v2">{item.date}</span>
+                    <span className="meta-sep"> • </span>
                     <span className="award-issuer-v2">{item.issuer}</span>
                 </div>
                 
@@ -181,7 +182,7 @@ const AwardCard = ({ item, index, onSelect }) => {
                 <p className="award-desc-v2">{item.description}</p>
                 
                 <div className="award-tech-v2">
-                    {item.tech.map(t => <span key={t}>{t}</span>)}
+                    {item.tech.map(t => <span key={t} className="tech-tag-v2">{t}</span>)}
                 </div>
 
                 <div className="award-footer-v2">
