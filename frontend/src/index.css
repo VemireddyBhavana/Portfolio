@@ -811,6 +811,10 @@ canvas[style*="position: fixed"] {
         justify-content: center;
     }
 
+    .hero-socials {
+        display: none !important;
+    }
+
     .hero-title-premium {
         font-size: 3.5rem;
     }
