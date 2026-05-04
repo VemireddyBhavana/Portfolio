@@ -168,14 +168,21 @@ canvas[style*="pointer-events: none"],
 
 @media (max-width: 968px) {
     .hero-content-pivot {
-        flex-direction: column;
+        flex-direction: column !important;
         text-align: center;
         gap: 3rem;
     }
 
+    .hero-text-premium {
+        align-items: center !important;
+        text-align: center !important;
+        max-width: 100%;
+    }
+
     .about-layout-pivot {
-        flex-direction: column;
+        flex-direction: column !important;
         text-align: center;
+        gap: 3rem;
     }
 }
 
@@ -350,13 +357,17 @@ html {
     scroll-behavior: smooth;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
 }
 
 .App {
@@ -2470,12 +2481,12 @@ canvas[style*="position: fixed"] {
 
 
 .awards-grid-premium {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 2.5rem !important;
-    width: 100% !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    width: 100%;
     max-width: 1200px;
-    margin: 4rem auto 0 !important;
+    margin: 4rem auto 0;
 }
 
 .award-card-v2 {
@@ -2772,14 +2783,14 @@ canvas[style*="position: fixed"] {
 /* Responsive Breakpoints */
 @media (max-width: 900px) {
     .awards-grid-premium {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 2rem !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
 }
 
 @media (max-width: 768px) {
     .awards-grid-premium {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         gap: 1.5rem;
     }
 
