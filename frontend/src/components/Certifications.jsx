@@ -218,8 +218,8 @@ const certificateData = [
         title: "From Code to CEO Journey",
         issuer: "Ameet Ayare / NIAT",
         date: "Feb 2025",
-        image: "https://images.unsplash.com/photo-1478737270239-2fccd2c40c4a?auto=format&fit=crop&q=80&w=800",
-        certImage: "https://images.unsplash.com/photo-1478737270239-2fccd2c40c4a?auto=format&fit=crop&q=80&w=1200",
+        image: "https://media.licdn.com/dms/image/v2/D4E22AQEezv2erKp6zQ/feedshare-shrink_800/B4EZTw9uInHcAg-/0/1739209501080?e=1779321600&v=beta&t=reZCtKIr5cDFxh1WsNx1r5Qgzns9pVgiQPSHxKmb9zQ",
+        certImage: "https://media.licdn.com/dms/image/v2/D4E22AQEezv2erKp6zQ/feedshare-shrink_800/B4EZTw9uInHcAg-/0/1739209501080?e=1779321600&v=beta&t=reZCtKIr5cDFxh1WsNx1r5Qgzns9pVgiQPSHxKmb9zQ",
         description: "Gained insights into tech leadership and entrepreneurship from the CEO of Actlogica.",
         icon: <Mic size={18} />,
         buttonText: "View Certificate"
