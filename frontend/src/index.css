@@ -356,6 +356,12 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+}
+
+.App {
+    position: relative;
+    width: 100%;
 }
 
 /* Custom Scrollbar */
@@ -484,6 +490,7 @@ canvas[style*="position: fixed"] {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
 }
 
 .section {
