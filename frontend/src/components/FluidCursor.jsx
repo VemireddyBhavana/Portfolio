@@ -45,8 +45,11 @@ const FluidCursor = () => {
         }
 
         const handleMouseMove = (e) => {
-            mouse.current.x = e.clientX;
-            mouse.current.y = e.clientY;
+            const x = e.clientX || (e.touches && e.touches[0].clientX);
+            const y = e.clientY || (e.touches && e.touches[0].clientY);
+            
+            mouse.current.x = x;
+            mouse.current.y = y;
 
             // Update hue over time for multicolor effect
             hue.current += 2;

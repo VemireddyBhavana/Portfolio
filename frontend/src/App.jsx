@@ -13,6 +13,8 @@ import Certifications from './components/Certifications';
 import FloatingShapes from './components/FloatingShapes';
 import ScrollProgress from './components/ScrollProgress';
 import FluidCursor from './components/FluidCursor';
+import FluidBackground from './components/FluidBackground';
+import NeonCursor from './components/NeonCursor';
 
 // Pages
 import NexusShowcase from './pages/NexusShowcase';
@@ -88,8 +90,10 @@ const Home = () => {
           style={{ x: useTransform(blobX, x => x * 0.8), y: useTransform(blobY, y => y * -0.5) }}
         />
       </div>
+      <FluidBackground />
       <CustomCursor />
       <FluidCursor />
+      <NeonCursor />
       <Sidebar />
       <main className="main-viewport">
         <Hero />
