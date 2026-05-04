@@ -12,6 +12,7 @@ import Contact from './components/Contact';
 import Certifications from './components/Certifications';
 import FloatingShapes from './components/FloatingShapes';
 import ScrollProgress from './components/ScrollProgress';
+import FluidCursor from './components/FluidCursor';
 
 // Pages
 import NexusShowcase from './pages/NexusShowcase';
@@ -88,6 +89,7 @@ const Home = () => {
         />
       </div>
       <CustomCursor />
+      <FluidCursor />
       <Sidebar />
       <main className="main-viewport">
         <Hero />
