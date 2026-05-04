@@ -229,8 +229,8 @@ const certificateData = [
         title: "Autonomous Mobility 101",
         issuer: "NxTWave / NIAT",
         date: "March 2025",
-        image: "https://images.unsplash.com/photo-1555624106-22e965f3f019?auto=format&fit=crop&q=80&w=800",
-        certImage: "https://images.unsplash.com/photo-1555624106-22e965f3f019?auto=format&fit=crop&q=80&w=1200",
+        image: "https://media.licdn.com/dms/image/v2/D4E22AQF_01zJj35Hjw/feedshare-shrink_800/B4EZV2vS6rHgAo-/0/1741453866045?e=1779321600&v=beta&t=x1olHCVGeIkUyDsWFUyu21yZ93UCKuWzKliC6Y71BHQ",
+        certImage: "https://media.licdn.com/dms/image/v2/D4E22AQF_01zJj35Hjw/feedshare-shrink_800/B4EZV2vS6rHgAo-/0/1741453866045?e=1779321600&v=beta&t=x1olHCVGeIkUyDsWFUyu21yZ93UCKuWzKliC6Y71BHQ",
         description: "Attended the workshop on autonomous robotics and mobility hosted by the VP of Robotics at NxTWave.",
         icon: <Star size={18} />,
         buttonText: "View Certificate"
