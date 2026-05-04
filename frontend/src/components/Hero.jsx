@@ -104,7 +104,7 @@ const Hero = () => {
                 }}
               ></motion.div>
               <img 
-                src="https://res.cloudinary.com/de8opipom/image/upload/v1774977788/photo_li1vaw.jpg" 
+                src="https://res.cloudinary.com/de8opipom/image/upload/v1777867628/photo_fbf76u.jpg" 
                 alt="Bhavana Profile" 
                 className="profile-image-actual"
               />
