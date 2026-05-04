@@ -215,13 +215,13 @@ const certificateData = [
     },
     {
         id: 5,
-        title: "Special Recognition",
-        issuer: "NIAT Management",
-        date: "2024",
-        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800",
-        certImage: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200",
-        description: "Received special appreciation and gifts from the NIAT management for outstanding technical contributions.",
-        icon: <Gift size={18} />,
+        title: "From Code to CEO Journey",
+        issuer: "Ameet Ayare / NIAT",
+        date: "Feb 2025",
+        image: "https://images.unsplash.com/photo-1478737270239-2fccd2c40c4a?auto=format&fit=crop&q=80&w=800",
+        certImage: "https://images.unsplash.com/photo-1478737270239-2fccd2c40c4a?auto=format&fit=crop&q=80&w=1200",
+        description: "Gained insights into tech leadership and entrepreneurship from the CEO of Actlogica.",
+        icon: <Mic size={18} />,
         buttonText: "View Certificate"
     },
     {
@@ -237,13 +237,13 @@ const certificateData = [
     },
     {
         id: 7,
-        title: "From Code to CEO Journey",
-        issuer: "Ameet Ayare / NIAT",
-        date: "Feb 2025",
-        image: "https://images.unsplash.com/photo-1478737270239-2fccd2c40c4a?auto=format&fit=crop&q=80&w=800",
-        certImage: "https://images.unsplash.com/photo-1478737270239-2fccd2c40c4a?auto=format&fit=crop&q=80&w=1200",
-        description: "Gained insights into tech leadership and entrepreneurship from the CEO of Actlogica.",
-        icon: <Mic size={18} />,
+        title: "Special Recognition",
+        issuer: "NIAT Management",
+        date: "2024",
+        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800",
+        certImage: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200",
+        description: "Received special appreciation and gifts from the NIAT management for outstanding technical contributions.",
+        icon: <Gift size={18} />,
         buttonText: "View Certificate"
     },
     {
