@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { Rocket, Menu, X } from 'lucide-react';
 import Magnetic from './Magnetic';
 
 const Navbar = () => {
@@ -19,8 +20,9 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'About', id: 'about' },
-        { name: 'Projects', id: 'projects' },
         { name: 'Skills', id: 'skills' },
+        { name: 'Awards', id: 'certifications' },
+        { name: 'Projects', id: 'projects' },
         { name: 'Contact', id: 'contact' },
     ];
 
