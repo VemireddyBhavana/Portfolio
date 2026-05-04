@@ -234,28 +234,6 @@ const certificateData = [
         description: "Attended the workshop on autonomous robotics and mobility hosted by the VP of Robotics at NxTWave.",
         icon: <Star size={18} />,
         buttonText: "View Certificate"
-    },
-    {
-        id: 7,
-        title: "Special Recognition",
-        issuer: "NIAT Management",
-        date: "2024",
-        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800",
-        certImage: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200",
-        description: "Received special appreciation and gifts from the NIAT management for outstanding technical contributions.",
-        icon: <Gift size={18} />,
-        buttonText: "View Certificate"
-    },
-    {
-        id: 8,
-        title: "Generative AI for Developers",
-        issuer: "NxTWave / IBM",
-        date: "2024",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-        certImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
-        description: "Mastered Generative AI strategy, ethical AI implementation, and building AI-powered applications with IBM.",
-        icon: <Award size={18} />,
-        buttonText: "View Certificate"
     }
 ];
 
