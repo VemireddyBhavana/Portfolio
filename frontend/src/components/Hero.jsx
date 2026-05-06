@@ -187,13 +187,11 @@ const Hero = () => {
                 {[
                   { icon: <Github size={20} />, link: "https://github.com/VemireddyBhavana" },
                   { icon: <Linkedin size={20} />, link: "https://www.linkedin.com/in/vemireddy-bhavana/" },
-                  { icon: <Mail size={20} />, link: "mailto:bhavanavemireddy6@gmail.com" },
-                  { icon: <Twitter size={20} />, link: "#" },
-                  { icon: <Youtube size={20} />, link: "#" }
+                  { icon: <Mail size={20} />, link: "https://mail.google.com/mail/u/0/?fs=1&to=bhavanavemireddy6@gmail.com&tf=cm" }
                 ].map((social, i) => (
                   <Magnetic key={i}>
                     <motion.a 
-                      whileHover={{ y: -5, color: '#00f5ff' }} 
+                      whileHover={{ y: -5, color: '#000000' }} 
                       whileTap={{ scale: 0.9 }} 
                       href={social.link} 
                       target={social.link.startsWith('mailto:') ? "_self" : "_blank"} 

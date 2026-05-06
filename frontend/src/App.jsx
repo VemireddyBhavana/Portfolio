@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SmoothScroll from './components/SmoothScroll';
 import CustomCursor from './components/CustomCursor';
-
-// Components
 import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,9 +10,7 @@ import Contact from './components/Contact';
 import Certifications from './components/Certifications';
 import FloatingShapes from './components/FloatingShapes';
 // import ScrollProgress from './components/ScrollProgress'; // Removed blue bar
-import FluidCursor from './components/FluidCursor';
 import FluidBackground from './components/FluidBackground';
-import NeonCursor from './components/NeonCursor';
 
 // Pages
 import NexusShowcase from './pages/NexusShowcase';
@@ -101,8 +97,6 @@ const Home = () => {
         <Contact />
       </main>
       <CustomCursor />
-      <FluidCursor />
-      <NeonCursor />
     </div>
   );
 };

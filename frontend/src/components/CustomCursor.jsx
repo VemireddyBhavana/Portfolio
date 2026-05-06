@@ -99,23 +99,25 @@ const CustomCursor = () => {
     hover: {
       dot: { scale: 0, opacity: 0 },
       ring: { 
-        scale: 1.5, 
+        scale: 1.6, 
         opacity: 1, 
-        backgroundColor: 'rgba(0, 245, 255, 0.15)', 
-        borderWidth: '0px',
-        backdropFilter: 'blur(4px)',
-        mixBlendMode: 'difference' 
+        backgroundColor: 'rgba(0, 245, 255, 0.05)', 
+        borderWidth: '2px',
+        borderColor: 'rgba(0, 245, 255, 1)',
+        backdropFilter: 'none',
+        mixBlendMode: 'normal'
       }
     },
     magnetic: {
       dot: { scale: 0, opacity: 0 },
       ring: { 
-        scale: 2, 
+        scale: 1.8, 
         opacity: 1, 
-        backgroundColor: 'rgba(0, 245, 255, 0.2)', 
-        borderWidth: '2px',
+        backgroundColor: 'rgba(0, 245, 255, 0.08)', 
+        borderWidth: '1.5px',
         borderColor: 'var(--accent-color)',
-        backdropFilter: 'blur(2px)'
+        backdropFilter: 'none',
+        mixBlendMode: 'normal'
       }
     },
     click: {

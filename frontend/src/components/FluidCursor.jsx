@@ -21,19 +21,21 @@ const FluidCursor = () => {
             constructor(x, y, h) {
                 this.x = x;
                 this.y = y;
-                this.size = Math.random() * 8 + 4;
-                this.speedX = Math.random() * 2 - 1;
-                this.speedY = Math.random() * 2 - 1;
+                this.size = Math.random() * 6 + 2; // Reduced size
+                this.speedX = Math.random() * 1.2 - 0.6; // Reduced speed
+                this.speedY = Math.random() * 1.2 - 0.6; // Reduced speed
                 this.color = h;
                 this.life = 1;
-                this.decay = Math.random() * 0.01 + 0.005;
+                this.decay = Math.random() * 0.02 + 0.015; // Faster decay
             }
 
             update() {
+                this.speedX *= 0.95; // Added friction
+                this.speedY *= 0.95; // Added friction
                 this.x += this.speedX;
                 this.y += this.speedY;
                 this.life -= this.decay;
-                if (this.size > 0.2) this.size -= 0.1;
+                if (this.size > 0.1) this.size -= 0.1;
             }
 
             draw() {
@@ -59,6 +61,11 @@ const FluidCursor = () => {
             for (let i = 0; i < 3; i++) {
                 particles.current.push(new Particle(mouse.current.x, mouse.current.y, hue.current));
             }
+
+            // Ensure animation is running
+            if (!animationFrameId) {
+                animate();
+            }
         };
 
         const drawLines = () => {
@@ -68,9 +75,9 @@ const FluidCursor = () => {
                     const dy = particles.current[i].y - particles.current[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 100) {
+                    if (distance < 50) { // Tightened connection distance
                         ctx.beginPath();
-                        ctx.strokeStyle = `hsla(${particles.current[i].color}, 100%, 50%, ${particles.current[i].life * 0.2})`;
+                        ctx.strokeStyle = `hsla(${particles.current[i].color}, 100%, 50%, ${particles.current[i].life * 0.15})`; // Reduced opacity
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles.current[i].x, particles.current[i].y);
                         ctx.lineTo(particles.current[j].x, particles.current[j].y);
@@ -82,6 +89,12 @@ const FluidCursor = () => {
         };
 
         const animate = () => {
+            if (particles.current.length === 0) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                animationFrameId = null;
+                return;
+            }
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             // Cycle hue slowly even when not moving
@@ -105,7 +118,7 @@ const FluidCursor = () => {
         window.addEventListener('mousemove', handleMouseMove);
         
         resize();
-        animate();
+        // Don't start animation immediately, it will start on mouse move
 
         return () => {
             window.removeEventListener('resize', resize);
@@ -126,7 +139,7 @@ const FluidCursor = () => {
                 height: '100%',
                 pointerEvents: 'none',
                 zIndex: 99999999,
-                filter: 'blur(6px) contrast(15)', // Adjusted for better color clarity
+                filter: 'blur(3px) contrast(15)', // Sharpened blur for tighter effect
                 background: 'transparent',
                 mixBlendMode: 'screen'
             }}

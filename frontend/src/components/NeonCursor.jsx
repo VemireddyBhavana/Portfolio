@@ -27,14 +27,31 @@ const NeonCursor = () => {
         const render = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            smoothedMouse.current.x += (mouse.current.x - smoothedMouse.current.x) * 0.15;
-            smoothedMouse.current.y += (mouse.current.y - smoothedMouse.current.y) * 0.15;
+            const dx = (mouse.current.x - smoothedMouse.current.x);
+            const dy = (mouse.current.y - smoothedMouse.current.y);
+            
+            smoothedMouse.current.x += dx * 0.25; // Faster following
+            smoothedMouse.current.y += dy * 0.25;
 
-            points.current.push({ ...smoothedMouse.current });
-            if (points.current.length > 20) points.current.shift();
+            // Only add points if moving or if the trail hasn't fully collapsed to the current position
+            const isMoving = Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1;
+            
+            if (isMoving || points.current.some(p => Math.abs(p.x - smoothedMouse.current.x) > 0.1)) {
+                points.current.push({ ...smoothedMouse.current });
+                if (points.current.length > 12) points.current.shift(); // Tighter trail
+            } else if (points.current.length > 0) {
+                // If stopped and trail is collapsed, we can eventually stop rendering
+                points.current.shift();
+            }
+
+            if (points.current.length === 0 && !isMoving) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                animationFrameId = null;
+                return;
+            }
 
             if (points.current.length > 1) {
-                ctx.shadowBlur = isDarkMode ? 20 : 10;
+                ctx.shadowBlur = isDarkMode ? 15 : 8; // Reduced blur
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
 
@@ -66,6 +83,10 @@ const NeonCursor = () => {
             const y = e.clientY || (e.touches && e.touches[0].clientY);
             mouse.current.x = x;
             mouse.current.y = y;
+
+            if (!animationFrameId) {
+                render();
+            }
         };
 
         window.addEventListener('resize', resize);
@@ -73,7 +94,7 @@ const NeonCursor = () => {
         window.addEventListener('touchmove', handleMove, { passive: true });
         
         resize();
-        render();
+        // Animation starts on movement
 
         return () => {
             window.removeEventListener('resize', resize);

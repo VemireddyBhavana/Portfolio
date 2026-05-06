@@ -287,8 +287,18 @@ canvas[style*="pointer-events: none"],
 }
 
 ::selection {
-    background: var(--accent-color);
-    color: #000;
+    background: transparent;
+    color: inherit;
+}
+
+* {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Allow selection on text-heavy content if necessary */
+p, h1, h2, h3, h4, span, input, textarea {
+    user-select: text;
 }
 
 .custom-cursor {
@@ -336,7 +346,7 @@ canvas[style*="pointer-events: none"],
 
 .social-circle-btn:hover {
     border-color: var(--accent-color);
-    background: rgba(0, 245, 255, 0.1);
+    background: var(--accent-color);
 }
 
 @media (max-width: 968px) {
@@ -411,8 +421,8 @@ h4 {
     -webkit-tap-highlight-color: transparent;
 }
 
-body {
-    cursor: default !important; /* Ensure browser cursor is always visible */
+body, html, * {
+    cursor: none !important;
 }
 
 .interactive {

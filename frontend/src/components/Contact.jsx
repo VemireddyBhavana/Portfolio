@@ -94,7 +94,7 @@ const Contact = () => {
 
                         <div className="contact-details">
                             {[
-                                { href: "mailto:bhavanavemireddy6@gmail.com", icon: <Mail size={20} />, label: "Email", value: "bhavanavemireddy6@gmail.com", isLink: true },
+                                { href: "https://mail.google.com/mail/u/0/?fs=1&to=bhavanavemireddy6@gmail.com&tf=cm", icon: <Mail size={20} />, label: "Email", value: "bhavanavemireddy6@gmail.com", isLink: true },
                                 { icon: <MapPin size={20} />, label: "Location", value: "Hyderabad, Telangana", isLink: false }
                             ].map((item, i) => (
                                 <motion.div
