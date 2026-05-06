@@ -140,15 +140,25 @@ const PremiumCursor = () => {
                 auraRef.current.style.transform = `translate3d(${auraPos.current.x + (isInactive ? driftX : 0)}px, ${auraPos.current.y + (isInactive ? driftY : 0)}px, 0) scale(${auraScale})`;
                 auraRef.current.style.opacity = isInactive ? '0.2' : (isHovered ? '0.8' : '0.4');
                 
-                // Update hue for vibrant RGB transition
-                const hueBase = 230; 
-                const hueRange = 50; 
-                hue.current = hueBase + Math.sin(time * 0.8) * hueRange;
+                // Update hue for rapid RGB transition
+                const hueBase = 220; 
+                const hueRange = 80; // Wider range (140 to 300)
+                hue.current = hueBase + Math.sin(time * 1.5) * hueRange; // Faster oscillation
                 
                 // DIRECTLY UPDATE COLORS ON REFS
-                auraRef.current.style.background = `radial-gradient(circle, hsla(${hue.current}, 100%, 60%, 0.4) 0%, hsla(${hue.current + 30}, 100%, 50%, 0.2) 30%, hsla(${hue.current + 60}, 100%, 50%, 0.1) 60%, transparent 80%)`;
+                // Using a more complex multi-color gradient for the aura
+                const h1 = hue.current;
+                const h2 = (hue.current + 60) % 360;
+                const h3 = (hue.current + 120) % 360;
+                
+                auraRef.current.style.background = `radial-gradient(circle at center, 
+                    hsla(${h1}, 100%, 60%, 0.5) 0%, 
+                    hsla(${h2}, 100%, 50%, 0.3) 30%, 
+                    hsla(${h3}, 100%, 50%, 0.1) 60%, 
+                    transparent 80%)`;
+                
                 if (cursorRef.current) {
-                    cursorRef.current.style.boxShadow = `0 0 20px 2px hsla(${hue.current}, 100%, 70%, 0.8)`;
+                    cursorRef.current.style.boxShadow = `0 0 20px 2px hsla(${h1}, 100%, 70%, 0.8)`;
                 }
             }
 
@@ -165,7 +175,7 @@ const PremiumCursor = () => {
                         pos.current.y, 
                         -velocity.current.x, 
                         -velocity.current.y, 
-                        hue.current + (Math.random() - 0.5) * 40, // Color variation
+                        (hue.current + i * 15) % 360, // Each particle in a burst has a different color
                         smoothVelocity.current
                     ));
                 }
