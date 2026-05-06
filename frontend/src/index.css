@@ -286,16 +286,20 @@ canvas[style*="pointer-events: none"],
     }
 }
 
-/* Global Interaction Stability */
+/* Global Interaction Stability - DISABLE ALL SELECTION */
 * {
     -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    -webkit-user-drag: none;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -webkit-user-drag: none !important;
 }
 
-/* Allow selection only on content text */
-p, span, input, textarea, .selectable-text {
-    user-select: text;
+/* Hide selection color entirely */
+::selection {
+    background: transparent !important;
+    color: inherit !important;
 }
 
 
