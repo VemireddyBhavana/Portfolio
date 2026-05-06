@@ -140,11 +140,16 @@ const PremiumCursor = () => {
                 auraRef.current.style.transform = `translate3d(${auraPos.current.x + (isInactive ? driftX : 0)}px, ${auraPos.current.y + (isInactive ? driftY : 0)}px, 0) scale(${auraScale})`;
                 auraRef.current.style.opacity = isInactive ? '0.2' : (isHovered ? '0.8' : '0.4');
                 
-                // Update hue for vibrant RGB transition (Cyan -> Blue -> Purple)
-                // Cyan: 180, Blue: 220, Purple: 280
-                const hueBase = 230; // Midpoint (Blue)
-                const hueRange = 50; // Reach Cyan (180) and Purple (280)
+                // Update hue for vibrant RGB transition
+                const hueBase = 230; 
+                const hueRange = 50; 
                 hue.current = hueBase + Math.sin(time * 0.8) * hueRange;
+                
+                // DIRECTLY UPDATE COLORS ON REFS
+                auraRef.current.style.background = `radial-gradient(circle, hsla(${hue.current}, 100%, 60%, 0.4) 0%, hsla(${hue.current + 30}, 100%, 50%, 0.2) 30%, hsla(${hue.current + 60}, 100%, 50%, 0.1) 60%, transparent 80%)`;
+                if (cursorRef.current) {
+                    cursorRef.current.style.boxShadow = `0 0 20px 2px hsla(${hue.current}, 100%, 70%, 0.8)`;
+                }
             }
 
             // 4. Adaptive Particle System
@@ -224,7 +229,7 @@ const PremiumCursor = () => {
                     borderRadius: '50%',
                     pointerEvents: 'none',
                     zIndex: 999997,
-                    background: `radial-gradient(circle, hsla(${hue.current}, 100%, 60%, 0.4) 0%, hsla(${hue.current + 30}, 100%, 50%, 0.2) 30%, hsla(${hue.current + 60}, 100%, 50%, 0.1) 60%, transparent 80%)`,
+                    background: 'transparent', // Will be updated by ref
                     filter: 'blur(25px)',
                     mixBlendMode: 'screen',
                     transition: 'width 0.6s, height 0.6s, opacity 0.8s ease',
@@ -245,7 +250,7 @@ const PremiumCursor = () => {
                     borderRadius: '50%',
                     pointerEvents: 'none',
                     zIndex: 999999,
-                    boxShadow: `0 0 20px 2px hsla(${hue.current}, 100%, 70%, 0.8)`,
+                    boxShadow: 'none', // Will be updated by ref
                     transition: 'width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.4s ease',
                     willChange: 'transform, width, height, border-radius'
                 }}
