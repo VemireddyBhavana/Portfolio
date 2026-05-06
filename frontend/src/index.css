@@ -286,19 +286,19 @@ canvas[style*="pointer-events: none"],
     }
 }
 
-::selection {
-    background: transparent;
-    color: inherit;
-}
-
+/* Global Interaction Stability */
 * {
-    user-select: none;
-    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Allow selection on text-heavy content if necessary */
-p, h1, h2, h3, h4, span, input, textarea {
-    user-select: text;
+@media (hover: hover) {
+    body, html, * {
+        cursor: none !important;
+    }
+}
+
+.interactive {
+    cursor: pointer !important;
 }
 
 .custom-cursor {
@@ -416,15 +416,6 @@ h4 {
 .gradient-text {
     background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
     -webkit-background-clip: text;
-/* Global Interaction Stability */
-* {
-    -webkit-tap-highlight-color: transparent;
-}
-
-body, html, * {
-    cursor: none !important;
-}
-
 .interactive {
     cursor: pointer !important;
 }
@@ -522,7 +513,7 @@ canvas[style*="position: fixed"] {
 /* Hero Section Pivot */
 .hero-section {
     position: relative;
-    height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -800,8 +791,12 @@ canvas[style*="position: fixed"] {
     }
 
     .profile-section-premium {
-        width: 320px;
-        height: 320px;
+        width: 260px;
+        height: 260px;
+    }
+    
+    .hero-title-premium {
+        font-size: clamp(2.5rem, 8vw, 4rem);
     }
 }
 
@@ -809,7 +804,7 @@ canvas[style*="position: fixed"] {
     .hero-content-pivot {
         flex-direction: column;
         text-align: center;
-        gap: 3rem;
+        gap: 2rem;
     }
 
     .availability-badge {
@@ -819,6 +814,7 @@ canvas[style*="position: fixed"] {
 
     .hero-cta-pivot {
         justify-content: center;
+        width: 100%;
     }
 
     .hero-socials {
@@ -826,7 +822,17 @@ canvas[style*="position: fixed"] {
     }
 
     .hero-title-premium {
-        font-size: 3.5rem;
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+        letter-spacing: -1px;
+    }
+    
+    .hero-subtitle-pivot {
+        font-size: 1.4rem;
+    }
+    
+    .hero-description-pivot {
+        font-size: 1rem;
+        padding: 0 1rem;
     }
 }
 
@@ -941,29 +947,26 @@ canvas[style*="position: fixed"] {
 
 @media (max-width: 968px) {
     .about-layout-pivot {
-        flex-direction: column-reverse;
-        /* Text first (which is the first child), Image second. Wait, column-reverse makes image first? */
-        /* If About.jsx has Text, then Image:
-           [Text] [Image]
-           Mobile: [Image]
-                   [Text]
-           If we want Text then Image: flex-direction: column
-        */
         flex-direction: column;
         text-align: center;
-        gap: 3rem;
+        gap: 2rem;
     }
 
     .about-text-container-pivot {
         align-items: center;
         text-align: center;
         max-width: 100%;
+        padding: 0 1rem;
     }
 
     .profile-section-premium {
-        width: 280px;
-        height: 280px;
-        margin-bottom: 2rem;
+        width: 240px;
+        height: 240px;
+        margin-bottom: 1rem;
+    }
+    
+    .section-title-pivot {
+        font-size: 2.5rem;
     }
 }
 
@@ -994,19 +997,18 @@ canvas[style*="position: fixed"] {
 .about-stats-pivot {
     display: flex;
     gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.stat-pivot h3 {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-    margin-bottom: 5px;
-}
-
-.stat-pivot span {
-    font-size: 0.9rem;
-    color: var(--text-color-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+@media (max-width: 600px) {
+    .about-stats-pivot {
+        gap: 1.5rem;
+    }
+    
+    .stat-pivot h3 {
+        font-size: 2rem;
+    }
 }
 
 .about-tabs-container {
@@ -1461,7 +1463,11 @@ canvas[style*="position: fixed"] {
 @media (max-width: 968px) {
     .contact-grid-premium {
         grid-template-columns: 1fr;
-        gap: 4rem;
+        gap: 2.5rem;
+    }
+    
+    .contact-form-premium {
+        padding: 2rem;
     }
 }
 
@@ -1525,6 +1531,14 @@ canvas[style*="position: fixed"] {
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
+
+@media (max-width: 768px) {
+    .form-premium-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
 
 .form-group-premium {
     margin-bottom: 1.5rem;

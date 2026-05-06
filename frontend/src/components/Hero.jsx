@@ -8,7 +8,7 @@ import AnimatedText from './AnimatedText';
 import TextScramble from './TextScramble';
 
 const Hero = () => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 968;
   const sectionRef = useRef(null);
   const buttonRef = useRef(null);
   

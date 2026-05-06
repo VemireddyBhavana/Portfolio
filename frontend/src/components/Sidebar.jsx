@@ -54,14 +54,22 @@ const Sidebar = () => {
     }
   };
 
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth <= 968 : false;
+  const [isMobile, setIsMobile] = React.useState(typeof window !== 'undefined' ? window.innerWidth <= 968 : false);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 968);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <motion.div 
       className="sidebar-premium"
       initial={isMobile ? { y: 100, x: "-50%", opacity: 0 } : { x: -100, y: "-50%", opacity: 0 }}
       animate={isMobile ? { y: 0, x: "-50%", opacity: 1 } : { x: 0, y: "-50%", opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="sidebar-icons">
         {navItems.map((item) => (
