@@ -298,10 +298,7 @@ p, span, input, textarea, .selectable-text {
     user-select: text;
 }
 
-::selection {
-    background: var(--accent-color);
-    color: #0b0f1a;
-}
+
 
 @media (hover: hover) {
     body, html, * {
