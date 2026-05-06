@@ -96,7 +96,6 @@ const Home = () => {
         <Projects />
         <Contact />
       </main>
-      <PremiumCursor />
     </div>
   );
 };
@@ -107,6 +106,7 @@ function AppContent() {
   return (
     <SmoothScroll>
       <div className="App">
+        <PremiumCursor />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />

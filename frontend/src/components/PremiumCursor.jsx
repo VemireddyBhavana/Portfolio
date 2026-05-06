@@ -20,16 +20,15 @@ const PremiumCursor = () => {
     const [isTouchDevice, setIsTouchDevice] = useState(false);
     const [isInactive, setIsInactive] = useState(false);
     const particles = useRef([]);
-    const hue = useRef(210); // Luxury Blue/Cyan
+    const hue = useRef(210); // Primary Hue
+    const hue2 = useRef(280); // Secondary Hue Offset
     const idleTimer = useRef(null);
 
     useEffect(() => {
-        const checkTouch = () => {
-            setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
-        };
-        checkTouch();
+        const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        setIsTouchDevice(isTouch);
         
-        if (isTouchDevice) return;
+        if (isTouch) return;
 
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
@@ -107,10 +106,10 @@ const PremiumCursor = () => {
             lastMouse.current.x = mouse.current.x;
             lastMouse.current.y = mouse.current.y;
 
-            // 2. Organic Breathing & Floating
-            const breathe = Math.sin(time * 2) * 2;
-            const driftX = Math.cos(time * 0.5) * 3;
-            const driftY = Math.sin(time * 0.7) * 3;
+            // 2. Organic Breathing & Floating (Amplify for premium feel)
+            const breathe = Math.sin(time * 2.5) * 4;
+            const driftX = Math.cos(time * 0.6) * 6;
+            const driftY = Math.sin(time * 0.8) * 6;
 
             // 3. Elegant Interpolation (Lerp)
             const followEase = isHovered ? 0.25 : 0.15;
@@ -135,47 +134,51 @@ const PremiumCursor = () => {
             }
 
             if (auraRef.current) {
-                // Breathing glow
-                const auraScale = (isHovered ? 2.2 : 1.0) + (isInactive ? breathe * 0.02 : 0);
+                // Breathing glow (Make it more dynamic)
+                const auraScale = (isHovered ? 2.5 : 1.0) + (isInactive ? breathe * 0.05 : 0);
                 auraRef.current.style.transform = `translate3d(${auraPos.current.x + (isInactive ? driftX : 0)}px, ${auraPos.current.y + (isInactive ? driftY : 0)}px, 0) scale(${auraScale})`;
-                auraRef.current.style.opacity = isInactive ? '0.2' : (isHovered ? '0.8' : '0.4');
+                auraRef.current.style.opacity = isInactive ? '0.3' : (isHovered ? '0.9' : '0.5');
                 
-                // Update hue for rapid RGB transition
-                const hueBase = 220; 
-                const hueRange = 80; // Wider range (140 to 300)
-                hue.current = hueBase + Math.sin(time * 1.5) * hueRange; // Faster oscillation
+                // Update dual hues for prismatic transition
+                const hueBase = 200; 
+                const hueRange = 120; 
+                hue.current = hueBase + Math.sin(time * 1.5) * hueRange;
+                hue2.current = (hue.current + 60 + Math.cos(time * 0.8) * 40) % 360;
                 
                 // DIRECTLY UPDATE COLORS ON REFS
-                // Using a more complex multi-color gradient for the aura
+                // Using 4 distinct color stops for a true prismatic feel
                 const h1 = hue.current;
-                const h2 = (hue.current + 60) % 360;
-                const h3 = (hue.current + 120) % 360;
+                const h2 = (hue.current + 45) % 360;
+                const h3 = (hue.current + 90) % 360;
+                const h4 = (hue.current + 135) % 360;
                 
                 auraRef.current.style.background = `radial-gradient(circle at center, 
-                    hsla(${h1}, 100%, 60%, 0.5) 0%, 
-                    hsla(${h2}, 100%, 50%, 0.3) 30%, 
-                    hsla(${h3}, 100%, 50%, 0.1) 60%, 
-                    transparent 80%)`;
+                    hsla(${hue.current}, 100%, 70%, 0.7) 0%, 
+                    hsla(${hue2.current}, 100%, 65%, 0.5) 30%, 
+                    hsla(${(hue.current + 120) % 360}, 100%, 60%, 0.3) 60%, 
+                    transparent 90%)`;
                 
                 if (cursorRef.current) {
-                    cursorRef.current.style.boxShadow = `0 0 20px 2px hsla(${h1}, 100%, 70%, 0.8)`;
+                    cursorRef.current.style.boxShadow = `
+                        0 0 15px 2px hsla(${h1}, 100%, 70%, 0.8),
+                        0 0 30px 5px hsla(${h2}, 100%, 60%, 0.4)
+                    `;
                 }
             }
 
-            // 4. Adaptive Particle System
+            // 4. Adaptive Particle System (Increase spawn rate for vibrancy)
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Motion Blur Trails on Canvas
-            if (!isInactive && smoothVelocity.current > 2) {
-                const spawnRate = isHovered ? 0.8 : 0.5;
+            if (!isInactive && smoothVelocity.current > 1.5) {
+                const spawnRate = isHovered ? 1.2 : 0.8;
                 const count = Math.floor(smoothVelocity.current * spawnRate);
-                for (let i = 0; i < Math.min(count, 10); i++) {
+                for (let i = 0; i < Math.min(count, 15); i++) {
                     particles.current.push(new Particle(
                         pos.current.x, 
                         pos.current.y, 
                         -velocity.current.x, 
                         -velocity.current.y, 
-                        (hue.current + i * 15) % 360, // Each particle in a burst has a different color
+                        (i % 2 === 0 ? hue.current : hue2.current) + (Math.random() * 20),
                         smoothVelocity.current
                     ));
                 }

@@ -75,7 +75,7 @@ const Sidebar = () => {
         {navItems.map((item) => (
           <Magnetic key={item.id}>
             <motion.div 
-              className={`sidebar-icon-wrapper ${activeSection === item.id ? 'active' : ''}`}
+              className={`sidebar-icon-wrapper interactive ${activeSection === item.id ? 'active' : ''}`}
               onClick={() => scrollToSection(item.id)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

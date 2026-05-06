@@ -94,35 +94,41 @@ const CustomCursor = () => {
   const variants = {
     default: {
       dot: { scale: 1, opacity: 1, backgroundColor: 'var(--accent-color)' },
-      ring: { scale: 1, opacity: 0.3, borderWidth: '1.5px', borderColor: 'var(--accent-color)' }
+      ring: { scale: 1, opacity: 0.3, borderWidth: '1.5px', borderColor: 'var(--accent-color)', backgroundColor: 'transparent' }
     },
     hover: {
-      dot: { scale: 0, opacity: 0 },
+      dot: { scale: 0.3, opacity: 0.8, backgroundColor: 'var(--accent-color)' },
       ring: { 
-        scale: 1.6, 
+        scale: 1.5, 
         opacity: 1, 
-        backgroundColor: 'rgba(0, 245, 255, 0.05)', 
+        backgroundColor: 'rgba(0, 245, 255, 0.1)', 
         borderWidth: '2px',
         borderColor: 'rgba(0, 245, 255, 1)',
-        backdropFilter: 'none',
+        backdropFilter: 'blur(4px)',
         mixBlendMode: 'normal'
       }
     },
     magnetic: {
       dot: { scale: 0, opacity: 0 },
       ring: { 
-        scale: 1.8, 
+        scale: 2, 
         opacity: 1, 
-        backgroundColor: 'rgba(0, 245, 255, 0.08)', 
-        borderWidth: '1.5px',
+        backgroundColor: 'rgba(0, 245, 255, 0.15)', 
+        borderWidth: '1px',
         borderColor: 'var(--accent-color)',
-        backdropFilter: 'none',
+        backdropFilter: 'blur(2px)',
         mixBlendMode: 'normal'
       }
     },
     click: {
-      dot: { scale: 0.5, opacity: 1 },
-      ring: { scale: 0.8, opacity: 0.8, borderWidth: '4px', borderColor: 'var(--accent-color)' }
+      dot: { scale: 0.6, opacity: 1 },
+      ring: { 
+        scale: 0.9, 
+        opacity: 1, 
+        borderWidth: '3px', 
+        borderColor: 'var(--accent-color)',
+        backgroundColor: 'rgba(0, 245, 255, 0.2)'
+      }
     }
   };
 

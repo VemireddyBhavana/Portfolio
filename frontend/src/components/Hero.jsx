@@ -8,7 +8,13 @@ import AnimatedText from './AnimatedText';
 import TextScramble from './TextScramble';
 
 const Hero = () => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 968;
+  const [isMobile, setIsMobile] = React.useState(typeof window !== 'undefined' ? window.innerWidth < 968 : false);
+  
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 968);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const sectionRef = useRef(null);
   const buttonRef = useRef(null);
   
