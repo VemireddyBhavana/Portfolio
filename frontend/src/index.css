@@ -301,34 +301,7 @@ canvas[style*="pointer-events: none"],
     cursor: pointer !important;
 }
 
-.custom-cursor {
-    width: 10px;
-    height: 10px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 100000;
-    box-shadow: 0 0 15px var(--accent-color);
-}
 
-/* Removed Scroll Progress Line */
-
-.custom-cursor-outline {
-    width: 45px;
-    height: 45px;
-    border: 1.5px solid var(--accent-color);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
 
 .social-circle-btn {
     width: 45px;
@@ -349,13 +322,7 @@ canvas[style*="pointer-events: none"],
     background: var(--accent-color);
 }
 
-@media (max-width: 968px) {
 
-    .custom-cursor,
-    .custom-cursor-outline {
-        display: none;
-    }
-}
 
 * {
     margin: 0;

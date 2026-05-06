@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SmoothScroll from './components/SmoothScroll';
-import CustomCursor from './components/CustomCursor';
+import PremiumCursor from './components/PremiumCursor';
 import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -96,7 +96,7 @@ const Home = () => {
         <Projects />
         <Contact />
       </main>
-      <CustomCursor />
+      <PremiumCursor />
     </div>
   );
 };
