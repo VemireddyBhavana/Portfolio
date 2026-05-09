@@ -40,11 +40,8 @@
 }
 
 /* GLOBAL CLICK-THROUGH: Ensure no visual layers block clicks */
-.custom-cursor-container,
-.fluid-cursor-container,
 #fluid-background-canvas,
-canvas[style*="pointer-events: none"],
-.neon-cursor-canvas {
+canvas[style*="pointer-events: none"] {
     pointer-events: none !important;
     user-select: none !important;
 }
@@ -339,11 +336,7 @@ span:not(.sidebar-premium span):not(.btn span) {
 
 
 
-@media (hover: hover) {
-    body, html, * {
-        cursor: none !important;
-    }
-}
+
 
 .interactive {
     cursor: pointer !important;
@@ -440,9 +433,8 @@ h4 {
     cursor: pointer !important;
 }
 
-/* Ensure Cursors are never blocked */
+/* Ensure backgrounds are never blocked */
 #fluid-background-canvas, 
-.fluid-cursor-container, 
 canvas[style*="position: fixed"] {
     pointer-events: none !important;
     user-select: none !important;

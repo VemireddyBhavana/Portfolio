@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SmoothScroll from './components/SmoothScroll';
-import PremiumCursor from './components/PremiumCursor';
 import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -106,7 +105,6 @@ function AppContent() {
   return (
     <SmoothScroll>
       <div className="App">
-        <PremiumCursor />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
