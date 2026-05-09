@@ -62,7 +62,11 @@ function SplashCursor({
       COLOR
     };
 
-    let pointers = [new pointerPrototype()];
+    // Support for multiple pointers (Multi-touch)
+    let pointers = [];
+    for (let i = 0; i < 10; i++) {
+        pointers.push(new pointerPrototype());
+    }
 
     const { gl, ext } = getWebGLContext(canvas);
     if (!ext.supportLinearFiltering) {
@@ -977,7 +981,6 @@ function SplashCursor({
       }
       return hash;
     }
-
     // Named event handlers for proper cleanup
     function handleMouseDown(e) {
       let pointer = pointers[0];
@@ -1003,18 +1006,21 @@ function SplashCursor({
 
     function handleTouchStart(e) {
       const touches = e.targetTouches;
-      let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
+        if (i >= pointers.length) break;
+        let pointer = pointers[i];
         let posX = scaleByPixelRatio(touches[i].clientX);
         let posY = scaleByPixelRatio(touches[i].clientY);
         updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+        clickSplat(pointer);
       }
     }
 
     function handleTouchMove(e) {
       const touches = e.targetTouches;
-      let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
+        let pointer = pointers.find(p => p.id === touches[i].identifier);
+        if (!pointer) continue;
         let posX = scaleByPixelRatio(touches[i].clientX);
         let posY = scaleByPixelRatio(touches[i].clientY);
         updatePointerMoveData(pointer, posX, posY, pointer.color);
@@ -1023,18 +1029,17 @@ function SplashCursor({
 
     function handleTouchEnd(e) {
       const touches = e.changedTouches;
-      let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
-        updatePointerUpData(pointer);
+        let pointer = pointers.find(p => p.id === touches[i].identifier);
+        if (pointer) updatePointerUpData(pointer);
       }
     }
 
-    // Add event listeners
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove, false);
-    window.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener('mousedown', handleMouseDown, { capture: true });
+    window.addEventListener('mousemove', handleMouseMove, { capture: true });
+    window.addEventListener('touchstart', handleTouchStart, { capture: true });
+    window.addEventListener('touchmove', handleTouchMove, { capture: true, passive: false });
+    window.addEventListener('touchend', handleTouchEnd, { capture: true });
 
     updateFrame();
 
@@ -1049,11 +1054,11 @@ function SplashCursor({
       }
 
       // Remove event listeners
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('mousedown', handleMouseDown, { capture: true });
+      window.removeEventListener('mousemove', handleMouseMove, { capture: true });
+      window.removeEventListener('touchstart', handleTouchStart, { capture: true });
+      window.removeEventListener('touchmove', handleTouchMove, { capture: true });
+      window.removeEventListener('touchend', handleTouchEnd, { capture: true });
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -1064,7 +1069,7 @@ function SplashCursor({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 999999,
+        zIndex: 10000000,
         pointerEvents: 'none',
         width: '100%',
         height: '100%'
