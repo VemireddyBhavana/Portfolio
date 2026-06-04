@@ -273,9 +273,6 @@ const Certifications = () => {
                             </div>
                             
                             <div className="award-content-v2">
-                                <div className="award-meta-v2">
-                                    <span>{item.date}</span> • <span>{item.issuer}</span>
-                                </div>
                                 <h3 className="award-title-v2" style={{ cursor: 'pointer' }}>{item.title}</h3>
                                 <p className="award-desc-v2">{item.description}</p>
                                 <div className="award-footer-v2">
