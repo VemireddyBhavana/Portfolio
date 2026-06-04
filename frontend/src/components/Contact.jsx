@@ -86,7 +86,7 @@ const Contact = () => {
                             delay={0.1}
                         />
                         <AnimatedText 
-                            text="I'm currently available for freelance work and full-time opportunities. If you have a project that needs a creative touch, I'd love to hear from you." 
+                            text="I'm currently available for internship opportunities and open to collaborating on innovative projects. Let's create something impactful together." 
                             className="contact-description-pivot"
                             direction="left"
                             delay={0.3}
