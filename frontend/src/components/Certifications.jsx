@@ -196,8 +196,8 @@ const certificateData = [
         title: "Build for Telangana Hackathon",
         issuer: "NIAT / NxTWave",
         date: "June 2025",
-        image: "https://media.licdn.com/dms/image/v2/D4E22AQHmPgGwuzlRgA/feedshare-shrink_800/B4EZhVa0_sGYAg-/0/1753779755605?e=1779321600&v=beta&t=H9SBspGD3-0Iy0tyeWIOpVECftYh6dKaOnZa1HnYU-E",
-        certImage: "https://media.licdn.com/dms/image/v2/D4E22AQHmPgGwuzlRgA/feedshare-shrink_800/B4EZhVa0_sGYAg-/0/1753779755605?e=1779321600&v=beta&t=H9SBspGD3-0Iy0tyeWIOpVECftYh6dKaOnZa1HnYU-E",
+        image: "/assets/telangana_hackathon_cert.png",
+        certImage: "/assets/telangana_hackathon_cert.png",
         description: "Participated in a state-level hackathon hosted exclusively for NIAT students to build impactful solutions for Telangana.",
         icon: <Rocket size={18} />,
         buttonText: "View Certificate"
