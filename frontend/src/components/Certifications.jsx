@@ -185,8 +185,8 @@ const certificateData = [
         title: "AI Agents 201 Hands-On",
         issuer: "NxTWave / NIAT",
         date: "April 2026",
-        image: "https://media.licdn.com/dms/image/v2/D5622AQFAMNmdbj1uFw/feedshare-shrink_800/B56Z2kLUrHIUAc-/0/1776575925207?e=1779321600&v=beta&t=6hC04egWbGDLqEGFfs76eUJsp3J-VyQomabavJqOmU4",
-        certImage: "https://media.licdn.com/dms/image/v2/D5622AQFAMNmdbj1uFw/feedshare-shrink_800/B56Z2kLUrHIUAc-/0/1776575925207?e=1779321600&v=beta&t=6hC04egWbGDLqEGFfs76eUJsp3J-VyQomabavJqOmU4",
+        image: "/assets/ai_agents_cert.jpg",
+        certImage: "/assets/ai_agents_cert.jpg",
         description: "Participated in building AI-driven solutions and gained hands-on experience solving real-world problems using AI Agents.",
         icon: <Bot size={18} />,
         buttonText: "View Certificate"
@@ -304,13 +304,9 @@ const Certifications = () => {
             <AnimatePresence>
                 {selectedCert && (
                     <motion.div className="cert-modal-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedCert(null)} style={{ zIndex: 1000001 }}>
-                        <motion.div className="cert-modal-content glass" initial={{ scale: 0.5 }} animate={{ scale: 1 }} exit={{ scale: 0.5 }} onClick={(e) => e.stopPropagation()}>
-                            <button className="modal-close-btn" onClick={() => setSelectedCert(null)}><X size={24} /></button>
-                            <img src={selectedCert.certImage} alt={selectedCert.title} style={{ width: '100%', borderRadius: '12px' }} />
-                            <div className="modal-cert-footer">
-                                <h3>{selectedCert.title}</h3>
-                                <p>{selectedCert.issuer} • {selectedCert.date}</p>
-                            </div>
+                        <motion.div className="cert-modal-content glass" initial={{ scale: 0.5 }} animate={{ scale: 1 }} exit={{ scale: 0.5 }} onClick={(e) => e.stopPropagation()} style={{ padding: 0, border: 'none', background: 'transparent', boxShadow: 'none' }}>
+                            <button className="modal-close-btn" onClick={() => setSelectedCert(null)} style={{ top: '1rem', right: '1rem' }}><X size={24} /></button>
+                            <img src={selectedCert.certImage} alt={selectedCert.title} style={{ width: '100%', borderRadius: '16px', display: 'block', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }} />
                         </motion.div>
                     </motion.div>
                 )}
