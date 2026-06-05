@@ -207,8 +207,8 @@ const certificateData = [
         title: "Build Your Own Buddy",
         issuer: "NIAT Robotics",
         date: "2024",
-        image: "https://media.licdn.com/dms/image/v2/D4D22AQH1_P7nNQ84iw/feedshare-shrink_800/B4DZuJ3ebbGUAg-/0/1767544581129?e=1779321600&v=beta&t=Ri5K_BiJetvuJkAlGIZyprj4fqhwmUlhglIFWQHXPgg",
-        certImage: "https://media.licdn.com/dms/image/v2/D4D22AQH1_P7nNQ84iw/feedshare-shrink_800/B4DZuJ3ebbGUAg-/0/1767544581129?e=1779321600&v=beta&t=Ri5K_BiJetvuJkAlGIZyprj4fqhwmUlhglIFWQHXPgg",
+        image: "/assets/build_your_own_buddy_cert.png",
+        certImage: "/assets/build_your_own_buddy_cert.png",
         description: "Completed the hands-on workshop focused on building functional robotic buddies through active participation.",
         icon: <Cpu size={18} />,
         buttonText: "View Certificate"
