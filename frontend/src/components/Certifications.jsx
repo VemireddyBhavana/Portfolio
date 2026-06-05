@@ -218,8 +218,8 @@ const certificateData = [
         title: "From Code to CEO Journey",
         issuer: "Ameet Ayare / NIAT",
         date: "Feb 2025",
-        image: "https://media.licdn.com/dms/image/v2/D4E22AQEezv2erKp6zQ/feedshare-shrink_800/B4EZTw9uInHcAg-/0/1739209501080?e=1779321600&v=beta&t=reZCtKIr5cDFxh1WsNx1r5Qgzns9pVgiQPSHxKmb9zQ",
-        certImage: "https://media.licdn.com/dms/image/v2/D4E22AQEezv2erKp6zQ/feedshare-shrink_800/B4EZTw9uInHcAg-/0/1739209501080?e=1779321600&v=beta&t=reZCtKIr5cDFxh1WsNx1r5Qgzns9pVgiQPSHxKmb9zQ",
+        image: "/assets/code_to_ceo_cert.png",
+        certImage: "/assets/code_to_ceo_cert.png",
         description: "Gained insights into tech leadership and entrepreneurship from the CEO of Actlogica.",
         icon: <Mic size={18} />,
         buttonText: "View Certificate"
@@ -229,8 +229,8 @@ const certificateData = [
         title: "Autonomous Mobility 101",
         issuer: "NxTWave / NIAT",
         date: "March 2025",
-        image: "https://media.licdn.com/dms/image/v2/D4E22AQF_01zJj35Hjw/feedshare-shrink_800/B4EZV2vS6rHgAo-/0/1741453866045?e=1779321600&v=beta&t=x1olHCVGeIkUyDsWFUyu21yZ93UCKuWzKliC6Y71BHQ",
-        certImage: "https://media.licdn.com/dms/image/v2/D4E22AQF_01zJj35Hjw/feedshare-shrink_800/B4EZV2vS6rHgAo-/0/1741453866045?e=1779321600&v=beta&t=x1olHCVGeIkUyDsWFUyu21yZ93UCKuWzKliC6Y71BHQ",
+        image: "/assets/autonomous_mobility_cert.png",
+        certImage: "/assets/autonomous_mobility_cert.png",
         description: "Attended the workshop on autonomous robotics and mobility hosted by the VP of Robotics at NxTWave.",
         icon: <Star size={18} />,
         buttonText: "View Certificate"
