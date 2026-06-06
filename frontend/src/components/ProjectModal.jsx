@@ -9,7 +9,11 @@ const ProjectModal = ({ project, onClose }) => {
     const handleVisitLive = (e) => {
         e.preventDefault();
         onClose();
-        navigate(project.link);
+        if (project.link.startsWith('http')) {
+            window.open(project.link, '_blank', 'noopener,noreferrer');
+        } else {
+            navigate(project.link);
+        }
     };
 
     return (
@@ -61,7 +65,7 @@ const ProjectModal = ({ project, onClose }) => {
                                 <button className="btn btn-primary interactive" onClick={handleVisitLive}>
                                     Live Preview <ExternalLink size={18} className="btn-icon" />
                                 </button>
-                                <a href="#" className="btn btn-outline interactive">
+                                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline interactive">
                                     Source Code <Github size={18} className="btn-icon" />
                                 </a>
                             </div>

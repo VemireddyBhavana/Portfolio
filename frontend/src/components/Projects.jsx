@@ -7,6 +7,16 @@ import AnimatedText from './AnimatedText';
 
 const projects = [
     {
+        id: 'Food Munch',
+        title: 'Food Munch',
+        subtitle: 'A sleek, fully responsive restaurant platform with dynamic search and smooth menus.',
+        image: 'https://img.freepik.com/premium-photo/collage-different-types-food-is-shown_875722-20314.jpg',
+        tags: ['React', 'CSS3', 'Responsive'],
+        desc: 'Food Munch is a premium, fully responsive restaurant website designed to offer a seamless food discovery experience. It features categorized interactive menus, high-definition food gallery showcases, customer testimonials, and an integrated reservation/ordering UI flow.',
+        link: 'https://food-munch-gray.vercel.app/',
+        github: 'https://github.com/VemireddyBhavana/food-munch'
+    },
+    {
         id: 'Nexus OS',
         title: 'Nexus OS',
         subtitle: 'A futuristic dashboard with real-time data visualization and glassmorphism UI.',
@@ -149,7 +159,14 @@ const ProjectCard = ({ project, index, onSelect }) => {
                         {project.tags.map(tag => <span key={tag}>{tag}</span>)}
                     </div>
                     <div className="project-links-premium">
-                        <a href={project.link} className="project-link-icon interactive"><ExternalLink size={20} /></a>
+                        <a 
+                            href={project.link} 
+                            target={project.link.startsWith('http') ? "_blank" : "_self"} 
+                            rel={project.link.startsWith('http') ? "noopener noreferrer" : ""} 
+                            className="project-link-icon interactive"
+                        >
+                            <ExternalLink size={20} />
+                        </a>
                         <a href={project.github} target="_blank" rel="noreferrer" className="project-link-icon interactive"><Github size={20} /></a>
                     </div>
                 </div>
@@ -172,7 +189,6 @@ const Projects = () => {
         }
     };
 
-    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 968 : false;
     const { scrollYProgress } = useScroll({
         target: gridRef,
         offset: ["start end", "end start"]
