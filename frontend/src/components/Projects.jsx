@@ -10,7 +10,7 @@ const projects = [
         id: 'Food Munch',
         title: 'Food Munch',
         subtitle: 'A sleek, fully responsive restaurant platform with dynamic search and smooth menus.',
-        image: 'https://img.freepik.com/premium-photo/collage-different-types-food-is-shown_875722-20314.jpg',
+        image: 'https://img.freepik.com/free-photo/ramadan-celebration-with-delicious-food_23-2151404398.jpg?semt=ais_hybrid&w=740&q=80',
         tags: ['React', 'CSS3', 'Responsive'],
         desc: 'Food Munch is a premium, fully responsive restaurant website designed to offer a seamless food discovery experience. It features categorized interactive menus, high-definition food gallery showcases, customer testimonials, and an integrated reservation/ordering UI flow.',
         link: 'https://food-munch-gray.vercel.app/',
