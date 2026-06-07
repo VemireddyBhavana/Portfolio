@@ -20,7 +20,7 @@ const projects = [
         id: 'MediNova',
         title: 'MediNova',
         subtitle: 'An AI-powered healthcare platform with online doctor consultations and appointment booking.',
-        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
+        image: '/assets/medinova.png',
         tags: ['React', 'Tailwind', 'WebRTC', 'APIs'],
         desc: 'MediNova is a comprehensive healthcare platform featuring real-time telemedicine consultations, appointment scheduling across 45+ medical specialties, and AI-driven health resources.',
         link: 'https://builder-nova-home-eight.vercel.app/',
