@@ -27,13 +27,13 @@ const projects = [
         github: 'https://github.com/VemireddyBhavana/Builder-nova-home'
     },
     {
-        id: 'Aether VR',
-        title: 'Aether VR',
-        subtitle: 'Immersive 3D landing page for a fictional VR brand featuring interactive shaders.',
-        image: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800',
-        tags: ['Three.js', 'GSAP', 'HTML5'],
-        desc: 'An experimental landing page showcasing advanced WebGL shaders and immersive 3D navigation.',
-        link: '/aether',
+        id: '3D Portfolio',
+        title: '3D Developer Portfolio',
+        subtitle: 'A premium, full-stack 3D portfolio featuring immersive WebGL canvases and dynamic integrations.',
+        image: '/assets/portfolio_preview.png',
+        tags: ['React', 'Three.js', 'Node.js', 'Express'],
+        desc: 'A premium full-stack developer portfolio featuring interactive 3D particle canvas backgrounds, glassmorphic UI components, smooth scroll physics, and a Node.js contact form server integrated with Gmail and Google Sheets.',
+        link: 'https://portfilo-topaz.vercel.app/',
         github: 'https://github.com/VemireddyBhavana/portfilo'
     },
     {
