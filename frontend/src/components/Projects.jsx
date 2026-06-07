@@ -17,14 +17,14 @@ const projects = [
         github: 'https://github.com/VemireddyBhavana/food-munch'
     },
     {
-        id: 'Nexus OS',
-        title: 'Nexus OS',
-        subtitle: 'A futuristic dashboard with real-time data visualization and glassmorphism UI.',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
-        tags: ['React', 'Three.js', 'CSS3'],
-        desc: 'A high-performance cloud dashboard featuring real-time data streaming and glassmorphism design patterns.',
-        link: '/nexus',
-        github: 'https://github.com/VemireddyBhavana/portfilo'
+        id: 'MediNova',
+        title: 'MediNova',
+        subtitle: 'An AI-powered healthcare platform with online doctor consultations and appointment booking.',
+        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
+        tags: ['React', 'Tailwind', 'WebRTC', 'APIs'],
+        desc: 'MediNova is a comprehensive healthcare platform featuring real-time telemedicine consultations, appointment scheduling across 45+ medical specialties, and AI-driven health resources.',
+        link: 'https://builder-nova-home-eight.vercel.app/',
+        github: 'https://github.com/VemireddyBhavana/Builder-nova-home'
     },
     {
         id: 'Aether VR',
