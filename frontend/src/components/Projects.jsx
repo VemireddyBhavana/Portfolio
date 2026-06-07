@@ -27,8 +27,8 @@ const projects = [
         github: 'https://github.com/VemireddyBhavana/Builder-nova-home'
     },
     {
-        id: 'portfilo',
-        title: 'portfilo',
+        id: 'Portfilo',
+        title: 'Portfilo',
         subtitle: 'A premium, full-stack 3D portfolio featuring immersive WebGL canvases and dynamic integrations.',
         image: '/assets/portfolio_preview.png',
         tags: ['React', 'Three.js', 'Node.js', 'Express'],
