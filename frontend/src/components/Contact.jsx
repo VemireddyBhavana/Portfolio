@@ -37,7 +37,7 @@ const Contact = () => {
         setIsSubmitting(true);
         
         // Use localhost for testing. Change this to your Render URL when you deploy!
-        const BACKEND_URL = 'http://localhost:5000/contact'; 
+        const BACKEND_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/contact`; 
 
         try {
             // --- 2. Capture and send form data ---
