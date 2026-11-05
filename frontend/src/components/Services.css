@@ -1,0 +1,481 @@
+/* ==========================================================================
+   Work With Me / Services Section
+   — Fully consistent with existing portfolio UI system
+   ========================================================================== */
+
+/* Remove the extra padding — .section class already applies 8rem 0 */
+.work-with-me-section {
+    position: relative;
+    z-index: 10;
+}
+
+/* ---- Section Header ---- */
+.work-with-me-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 56px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* "01 — SERVICES" pill — matches the accent color of the portfolio */
+.services-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 18px;
+    border-radius: 100px;
+    border: 1px solid rgba(0, 245, 255, 0.35);
+    background: rgba(0, 245, 255, 0.07);
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    box-shadow: 0 0 18px rgba(0, 245, 255, 0.12);
+    font-family: var(--font-heading);
+}
+
+/* Main Title — same style as other section titles */
+.services-main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    margin: 0 0 18px 0;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+@media (max-width: 768px) {
+    .services-main-title {
+        font-size: 2.5rem;
+    }
+}
+
+.services-main-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-color-muted);
+    max-width: 680px;
+    margin: 0 auto;
+    font-family: var(--font-body);
+}
+
+/* ---- 3-Column Category Grid ---- */
+.work-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 1100px) {
+    .work-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .work-categories-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---- Category Card — glass style matching the rest of the site ---- */
+.category-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.25), transparent);
+    pointer-events: none;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 245, 255, 0.35);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 245, 255, 0.08);
+}
+
+/* ---- Top Bar: Category Badge + Count ---- */
+.category-card-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.category-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    background: rgba(0, 245, 255, 0.07);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+}
+
+.category-count {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-color-muted);
+    font-family: var(--font-body);
+}
+
+/* ---- Title & Description ---- */
+.category-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+}
+
+.category-description {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-color-muted);
+    margin: 0 0 22px 0;
+    min-height: 64px;
+    font-family: var(--font-body);
+}
+
+@media (max-width: 1100px) {
+    .category-description { min-height: auto; }
+}
+
+/* ---- Service Tag Chips (matching portfolio's glass pill style) ---- */
+.category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.service-tag-chip {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-color-muted);
+    font-family: var(--font-body);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.service-tag-chip:hover {
+    background: rgba(0, 245, 255, 0.07);
+    border-color: rgba(0, 245, 255, 0.3);
+    color: var(--accent-color);
+}
+
+/* ---- Explore / Collapse Button — matching .tab-btn style ---- */
+.explore-services-btn {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 13px 18px;
+    color: var(--text-color);
+    font-size: 0.93rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.explore-services-btn:hover {
+    background: rgba(0, 245, 255, 0.05);
+    border-color: rgba(0, 245, 255, 0.35);
+    color: var(--accent-color);
+}
+
+.explore-services-btn.is-active {
+    background: rgba(0, 245, 255, 0.06);
+    border-color: rgba(0, 245, 255, 0.4);
+    color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.1);
+}
+
+.explore-chevron {
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+/* ---- Expanded Sub-Service Stack ---- */
+.expanded-services-stack {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow: hidden;
+}
+
+/* Sub-Service Card — also glass style */
+.sub-service-card {
+    background: radial-gradient(600px circle at 50% 0%,
+        rgba(0, 245, 255, 0.04),
+        transparent 50%), rgba(10, 15, 28, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 22px 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.sub-service-card:hover {
+    border-color: rgba(0, 245, 255, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 12px rgba(0, 245, 255, 0.07);
+    transform: translateY(-3px);
+}
+
+/* Sub-card icon badge + title header */
+.sub-service-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.sub-service-icon-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(0, 245, 255, 0.08);
+    border: 1px solid rgba(0, 245, 255, 0.25);
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.12);
+}
+
+.sub-service-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.sub-service-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text-color-muted);
+    margin: 0 0 16px 0;
+    font-family: var(--font-body);
+}
+
+/* Orange-dot bullet list */
+.sub-service-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sub-service-bullet-item {
+    font-size: 0.87rem;
+    color: var(--text-color-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+}
+
+.sub-service-bullet-item::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(0, 245, 255, 0.5);
+}
+
+/* Tech tag chips — same accent color system */
+.sub-service-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.tech-tag-chip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    background: rgba(0, 245, 255, 0.07);
+    border: 1px solid rgba(0, 245, 255, 0.25);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+}
+
+/* Inquire button — consistent with portfolio CTA style */
+.sub-service-inquire-btn {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-color);
+    border-radius: 12px;
+    padding: 11px 16px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sub-service-inquire-btn .inquire-arrow {
+    transition: transform 0.25s ease;
+}
+
+.sub-service-inquire-btn:hover {
+    background: rgba(0, 245, 255, 0.08);
+    border-color: rgba(0, 245, 255, 0.4);
+    color: var(--accent-color);
+    box-shadow: var(--neon-shadow);
+}
+
+.sub-service-inquire-btn:hover .inquire-arrow {
+    transform: translateX(4px);
+}
+
+/* ===== Light Mode Overrides ===== */
+[data-theme='light'] .services-pill-badge {
+    border-color: rgba(2, 132, 199, 0.4);
+    background: rgba(2, 132, 199, 0.07);
+    color: var(--accent-color);
+    box-shadow: none;
+}
+
+[data-theme='light'] .services-main-title {
+    color: var(--text-color);
+}
+
+[data-theme='light'] .services-main-subtitle,
+[data-theme='light'] .category-description,
+[data-theme='light'] .sub-service-subtitle {
+    color: var(--text-color-muted);
+}
+
+[data-theme='light'] .category-card {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+
+[data-theme='light'] .category-card:hover {
+    border-color: rgba(2, 132, 199, 0.4);
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08);
+}
+
+[data-theme='light'] .category-badge {
+    border-color: rgba(2, 132, 199, 0.35);
+    background: rgba(2, 132, 199, 0.07);
+    color: var(--accent-color);
+}
+
+[data-theme='light'] .category-title,
+[data-theme='light'] .sub-service-title {
+    color: var(--text-color);
+}
+
+[data-theme='light'] .service-tag-chip {
+    background: rgba(15, 23, 42, 0.03);
+    border-color: var(--glass-border);
+    color: var(--text-color-muted);
+}
+
+[data-theme='light'] .service-tag-chip:hover {
+    background: rgba(2, 132, 199, 0.07);
+    border-color: rgba(2, 132, 199, 0.3);
+    color: var(--accent-color);
+}
+
+[data-theme='light'] .explore-services-btn {
+    background: rgba(15, 23, 42, 0.03);
+    border-color: var(--glass-border);
+    color: var(--text-color);
+}
+
+[data-theme='light'] .explore-services-btn:hover,
+[data-theme='light'] .explore-services-btn.is-active {
+    background: rgba(2, 132, 199, 0.06);
+    border-color: rgba(2, 132, 199, 0.4);
+    color: var(--accent-color);
+}
+
+[data-theme='light'] .sub-service-card {
+    background: rgba(248, 250, 252, 0.8);
+    border-color: var(--glass-border);
+}
+
+[data-theme='light'] .sub-service-icon-badge {
+    background: rgba(2, 132, 199, 0.08);
+    border-color: rgba(2, 132, 199, 0.25);
+    color: var(--accent-color);
+}
+
+[data-theme='light'] .sub-service-bullet-item {
+    color: var(--text-color-muted);
+}
+
+[data-theme='light'] .sub-service-bullet-item::before {
+    background: var(--accent-color);
+    box-shadow: none;
+}
+
+[data-theme='light'] .tech-tag-chip {
+    background: rgba(2, 132, 199, 0.07);
+    border-color: rgba(2, 132, 199, 0.25);
+    color: var(--accent-color);
+}
+
+[data-theme='light'] .sub-service-inquire-btn {
+    background: rgba(15, 23, 42, 0.03);
+    border-color: var(--glass-border);
+    color: var(--text-color);
+}
+
+[data-theme='light'] .sub-service-inquire-btn:hover {
+    background: rgba(2, 132, 199, 0.08);
+    border-color: rgba(2, 132, 199, 0.4);
+    color: var(--accent-color);
+    box-shadow: var(--neon-shadow);
+}

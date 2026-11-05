@@ -125,7 +125,7 @@ const Skills = () => {
             >
                 <div className="timeline-item-pivot glass">
                     <div className="timeline-date">2024 - 2028</div>
-                    <h3>NxtWave Institute of Advanced Technologies (NIAT)</h3>
+                    <h3>NxtWave of Innovation in Advanced Technologies</h3>
                     <AnimatedText 
                         text="Computer Science Program in Data Science and Artificial Intelligence Specialization."
                         direction="bottom"

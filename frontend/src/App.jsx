@@ -6,6 +6,9 @@ import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Services from './components/Services';
+import ContactModal from './components/ContactModal';
+import FloatingWidgets from './components/FloatingWidgets';
 import Contact from './components/Contact';
 import Certifications from './components/Certifications';
 import FloatingShapes from './components/FloatingShapes';
@@ -94,8 +97,11 @@ const Home = () => {
         <Skills />
         <Certifications />
         <Projects />
+        <Services />
         <Contact />
       </main>
+      <ContactModal />
+      <FloatingWidgets />
     </div>
   );
 };

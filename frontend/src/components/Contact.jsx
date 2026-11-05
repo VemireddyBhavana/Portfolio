@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MessageSquare, Send, MapPin, Phone } from 'lucide-react';
 import Magnetic from './Magnetic';
@@ -13,6 +13,21 @@ const Contact = () => {
         message: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        const handleInquire = (e) => {
+            if (e.detail?.service) {
+                setFormData(prev => ({
+                    ...prev,
+                    subject: `Inquiry: ${e.detail.service}`,
+                    message: `Hi Bhavana,\n\nI'm interested in your "${e.detail.service}" service. Let's discuss details!`
+                }));
+            }
+        };
+
+        window.addEventListener('inquire-service', handleInquire);
+        return () => window.removeEventListener('inquire-service', handleInquire);
+    }, []);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });

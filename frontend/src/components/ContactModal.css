@@ -1,0 +1,319 @@
+/* ==========================================================================
+   Start a Conversation / Inquiry Modal (Exact Reference UI)
+   ========================================================================== */
+
+.inquiry-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.inquiry-modal-card {
+    width: 100%;
+    max-width: 640px;
+    background: #111520;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 28px;
+    padding: 38px 34px 34px;
+    position: relative;
+    box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.9), 0 0 50px rgba(234, 88, 12, 0.1);
+    color: #ffffff;
+    max-height: 92vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 640px) {
+    .inquiry-modal-card {
+        padding: 26px 20px 22px;
+        border-radius: 22px;
+    }
+}
+
+/* Close Button */
+.inquiry-modal-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.inquiry-modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+/* Top Pill Badge */
+.inquiry-modal-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(234, 88, 12, 0.45);
+    background: rgba(234, 88, 12, 0.08);
+    color: #fb923c;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+/* Title & Subtitle */
+.inquiry-modal-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.02em;
+}
+
+@media (max-width: 640px) {
+    .inquiry-modal-title {
+        font-size: 1.75rem;
+    }
+}
+
+.inquiry-modal-subtitle {
+    font-size: 0.93rem;
+    line-height: 1.55;
+    color: #94a3b8;
+    margin: 0 0 26px 0;
+    font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+/* Form Layout */
+.inquiry-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.inquiry-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 580px) {
+    .inquiry-form-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+}
+
+.inquiry-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inquiry-label {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+}
+
+.inquiry-req {
+    color: #ea580c;
+    margin-left: 2px;
+}
+
+.inquiry-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inquiry-input-icon {
+    position: absolute;
+    left: 14px;
+    color: #64748b;
+    pointer-events: none;
+}
+
+.inquiry-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 13px 14px 13px 44px;
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.inquiry-input:focus {
+    outline: none;
+    border-color: rgba(234, 88, 12, 0.55);
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+}
+
+.inquiry-input::placeholder {
+    color: #475569;
+}
+
+/* Purpose of Contact Select Dropdown */
+.inquiry-select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inquiry-select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 13px 40px 13px 44px;
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.inquiry-select option {
+    background: #0f1422;
+    color: #ffffff;
+    padding: 12px;
+}
+
+.inquiry-select:focus {
+    outline: none;
+    border-color: rgba(234, 88, 12, 0.55);
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+}
+
+.inquiry-select-chevron {
+    position: absolute;
+    right: 14px;
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+/* Textarea */
+.inquiry-textarea {
+    width: 100%;
+    min-height: 110px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 14px;
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    resize: vertical;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.inquiry-textarea:focus {
+    outline: none;
+    border-color: rgba(234, 88, 12, 0.55);
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+}
+
+.inquiry-textarea::placeholder {
+    color: #475569;
+}
+
+/* Submit Button */
+.inquiry-submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    border: none;
+    border-radius: 14px;
+    padding: 15px 24px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.45);
+    transition: all 0.25s ease;
+    margin-top: 6px;
+}
+
+.inquiry-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -5px rgba(234, 88, 12, 0.6);
+}
+
+.inquiry-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Light Mode Overrides */
+[data-theme='light'] .inquiry-modal-card {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    color: #0f172a;
+}
+
+[data-theme='light'] .inquiry-modal-title {
+    color: #0f172a;
+}
+
+[data-theme='light'] .inquiry-modal-subtitle {
+    color: #475569;
+}
+
+[data-theme='light'] .inquiry-label {
+    color: #1e293b;
+}
+
+[data-theme='light'] .inquiry-input,
+[data-theme='light'] .inquiry-select,
+[data-theme='light'] .inquiry-textarea {
+    background: rgba(15, 23, 42, 0.03);
+    border-color: rgba(15, 23, 42, 0.12);
+    color: #0f172a;
+}
+
+[data-theme='light'] .inquiry-select option {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+[data-theme='light'] .inquiry-modal-close-btn {
+    background: rgba(15, 23, 42, 0.05);
+    border-color: rgba(15, 23, 42, 0.1);
+    color: #475569;
+}
+
+[data-theme='light'] .inquiry-modal-close-btn:hover {
+    background: rgba(15, 23, 42, 0.1);
+    color: #0f172a;
+}
+

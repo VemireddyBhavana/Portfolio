@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Home, User, GraduationCap, Briefcase, Mail, Award } from 'lucide-react';
+import { Home, User, GraduationCap, Briefcase, Mail, Award, Layers } from 'lucide-react';
 import Magnetic from './Magnetic';
 import ThemeToggle from './ThemeToggle';
 
@@ -10,6 +10,7 @@ const navItems = [
   { id: 'skills', icon: <GraduationCap size={22} />, label: 'Skills' },
   { id: 'certifications', icon: <Award size={22} />, label: 'Awards' },
   { id: 'projects', icon: <Briefcase size={22} />, label: 'Work' },
+  { id: 'services', icon: <Layers size={22} />, label: 'Services' },
   { id: 'contact', icon: <Mail size={22} />, label: 'Contact' },
 ];
 
@@ -18,7 +19,7 @@ const Sidebar = () => {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'skills', 'certifications', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'certifications', 'projects', 'services', 'contact'];
       let current = '';
       
       for (let id of sections) {
